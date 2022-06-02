@@ -1,3 +1,3 @@
-require('./imagesloaded');
-require('./jquery');
-require('./main');
+import './imagesloaded.js';
+import './main.js';
+import './jquery.js';
