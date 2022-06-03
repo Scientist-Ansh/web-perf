@@ -1,5 +1,6 @@
 # Weekly Project 1 - 
 [Deployed link](https://web-perf.vercel.app/)
+
 The following tools have been used in the weekly project.
 
 ## Parcel
@@ -8,6 +9,7 @@ Parcel is a bundler which is used to achieve the following things.
 - Minification and concatenation of the html,css and js files.(automatic)
 - versioning of the css, images and js files via hashing.(automatic)
 - resizing of the images.
+- automatically building the website(build script added in package.json file)
   Example - 
   ``` 
   <img src="image.jpeg?width=500" alt="test image" />
