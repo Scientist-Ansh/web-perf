@@ -272,6 +272,16 @@
     </div>
   </footer>
 
+  <script type="module">
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register(new URL('js/sw.js', import.meta.url), { type: 'module' })
+        .then(function () {
+          console.log('Service Worker Registereddddddddd');
+        });
+    }
+
+  </script>
 
   <script type="text/javascript">
     /* <![CDATA[ */
@@ -292,7 +302,6 @@
     console.log("here")
 
   </script>
-  <script src="js/app.js" type="module"></script>
   <script src="js/script.js" type="module"></script>
 
 

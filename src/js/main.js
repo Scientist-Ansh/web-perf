@@ -1,9 +1,9 @@
 !(function (o) {
-  'use strict'
-  ;(o.fn.fitVids = function (t) {
+  'use strict';
+  (o.fn.fitVids = function (t) {
     var e,
       i,
-      s = { customSelector: null, ignore: null }
+      s = { customSelector: null, ignore: null };
     return (
       document.getElementById('fit-vids-style') ||
         ((e = document.head || document.getElementsByTagName('head')[0]),
@@ -19,15 +19,15 @@
           'iframe[src*="kickstarter.com"][src*="video.html"]',
           'object',
           'embed',
-        ]
-        s.customSelector && t.push(s.customSelector)
-        var n = '.fitvidsignore'
-        s.ignore && (n = n + ', ' + s.ignore)
-        t = o(this).find(t.join(','))
-        ;(t = (t = t.not('object object')).not(n)).each(function () {
+        ];
+        s.customSelector && t.push(s.customSelector);
+        var n = '.fitvidsignore';
+        s.ignore && (n = n + ', ' + s.ignore);
+        t = o(this).find(t.join(','));
+        (t = (t = t.not('object object')).not(n)).each(function () {
           var t,
             e,
-            i = o(this)
+            i = o(this);
           0 < i.parents(n).length ||
             ('embed' === this.tagName.toLowerCase() &&
               i.parent('object').length) ||
@@ -52,15 +52,15 @@
               .wrap('<div class="fluid-width-video-wrapper"></div>')
               .parent('.fluid-width-video-wrapper')
               .css('padding-top', 100 * t + '%'),
-            i.removeAttr('height').removeAttr('width'))
-        })
+            i.removeAttr('height').removeAttr('width'));
+        });
       })
-    )
+    );
   }),
-    (o.fn.fitVids._count = 0)
-})(window.jQuery || window.Zepto)
+    (o.fn.fitVids._count = 0);
+})(window.jQuery || window.Zepto);
 var objectFitImages = (function () {
-  'use strict'
+  'use strict';
   var a = 'bfred-it:object-fit-images',
     l = /(object-fit|object-position)\s*:\s*([-\w\s%]+)/g,
     t = new Image(),
@@ -70,18 +70,18 @@ var objectFitImages = (function () {
     u = 'string' == typeof t.currentSrc,
     h = t.getAttribute,
     d = t.setAttribute,
-    r = !1
+    r = !1;
   function p(t, e, i) {
     i =
       "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='" +
       (e || 1) +
       "' height='" +
       (i || 0) +
-      "'%3E%3C/svg%3E"
-    h.call(t, 'src') !== i && d.call(t, 'src', i)
+      "'%3E%3C/svg%3E";
+    h.call(t, 'src') !== i && d.call(t, 'src', i);
   }
   function m(t, e) {
-    t.naturalWidth ? e(t) : setTimeout(m, 100, t, e)
+    t.naturalWidth ? e(t) : setTimeout(m, 100, t, e);
   }
   function A(e) {
     var i,
@@ -94,27 +94,27 @@ var objectFitImages = (function () {
           null !== (e = l.exec(i));
 
         )
-          n[e[1]] = e[2]
-        return n
+          n[e[1]] = e[2];
+        return n;
       })(e),
-      r = e[a]
+      r = e[a];
     if (((o['object-fit'] = o['object-fit'] || 'fill'), !r.img)) {
-      if ('fill' === o['object-fit']) return
-      if (!r.skipTest && c && !o['object-position']) return
+      if ('fill' === o['object-fit']) return;
+      if (!r.skipTest && c && !o['object-position']) return;
     }
     if (!r.img) {
-      ;(r.img = new Image(e.width, e.height)),
+      (r.img = new Image(e.width, e.height)),
         (r.img.srcset = h.call(e, 'data-ofi-srcset') || e.srcset),
         (r.img.src = h.call(e, 'data-ofi-src') || e.src),
         d.call(e, 'data-ofi-src', e.src),
         e.srcset && d.call(e, 'data-ofi-srcset', e.srcset),
         p(e, e.naturalWidth || e.width, e.naturalHeight || e.height),
-        e.srcset && (e.srcset = '')
+        e.srcset && (e.srcset = '');
       try {
-        ;(i = e),
+        (i = e),
           (n = {
             get: function (t) {
-              return i[a].img[t || 'src']
+              return i[a].img[t || 'src'];
             },
             set: function (t, e) {
               return (
@@ -122,28 +122,28 @@ var objectFitImages = (function () {
                 d.call(i, 'data-ofi-' + e, t),
                 A(i),
                 t
-              )
+              );
             },
           }),
           Object.defineProperty(i, 'src', n),
           Object.defineProperty(i, 'currentSrc', {
             get: function () {
-              return n.get('currentSrc')
+              return n.get('currentSrc');
             },
           }),
           Object.defineProperty(i, 'srcset', {
             get: function () {
-              return n.get('srcset')
+              return n.get('srcset');
             },
             set: function (t) {
-              return n.set(t, 'srcset')
+              return n.set(t, 'srcset');
             },
-          })
+          });
       } catch (t) {
-        window.console && console.log('http://bit.ly/ofi-old-browser')
+        window.console && console.log('http://bit.ly/ofi-old-browser');
       }
     }
-    ;(t = r.img).srcset &&
+    (t = r.img).srcset &&
       !u &&
       window.picturefill &&
       ((t[(s = window.picturefill._).ns] && t[s.ns].evaled) ||
@@ -163,28 +163,28 @@ var objectFitImages = (function () {
         ? m(r.img, function () {
             r.img.naturalWidth > e.width || r.img.naturalHeight > e.height
               ? (e.style.backgroundSize = 'contain')
-              : (e.style.backgroundSize = 'auto')
+              : (e.style.backgroundSize = 'auto');
           })
         : (e.style.backgroundSize = o['object-fit']
             .replace('none', 'auto')
             .replace('fill', '100% 100%')),
       m(r.img, function (t) {
-        p(e, t.naturalWidth, t.naturalHeight)
-      })
+        p(e, t.naturalWidth, t.naturalHeight);
+      });
   }
   function f(t, e) {
-    var i = !r && !t
-    if (((e = e || {}), (s && !e.skipTest) || !o)) return !1
+    var i = !r && !t;
+    if (((e = e || {}), (s && !e.skipTest) || !o)) return !1;
     'string' == typeof (t = t || 'img')
       ? (t = document.querySelectorAll(t))
-      : 'length' in t || (t = [t])
+      : 'length' in t || (t = [t]);
     for (var n = 0; n < t.length; n++)
-      (t[n][a] = t[n][a] || { skipTest: e.skipTest }), A(t[n])
+      (t[n][a] = t[n][a] || { skipTest: e.skipTest }), A(t[n]);
     i &&
       (document.body.addEventListener(
         'load',
         function (t) {
-          'IMG' === t.target.tagName && f(t.target, { skipTest: e.skipTest })
+          'IMG' === t.target.tagName && f(t.target, { skipTest: e.skipTest });
         },
         !0
       ),
@@ -194,26 +194,26 @@ var objectFitImages = (function () {
         window.addEventListener(
           'resize',
           f.bind(null, t, { skipTest: e.skipTest })
-        )
+        );
   }
   function i(t, e) {
-    return t[a] && t[a].img && ('src' === e || 'srcset' === e) ? t[a].img : t
+    return t[a] && t[a].img && ('src' === e || 'srcset' === e) ? t[a].img : t;
   }
   return (
     (f.supportsObjectFit = c),
     (f.supportsObjectPosition = s) ||
       ((HTMLImageElement.prototype.getAttribute = function (t) {
-        return h.call(i(this, t), t)
+        return h.call(i(this, t), t);
       }),
       (HTMLImageElement.prototype.setAttribute = function (t, e) {
-        return d.call(i(this, t), t, String(e))
+        return d.call(i(this, t), t, String(e));
       })),
     f
-  )
-})()
+  );
+})();
 !(function (l, i, n, o) {
   function c(t, e) {
-    ;(this.settings = null),
+    (this.settings = null),
       (this.options = l.extend({}, c.Defaults, e)),
       (this.$element = l(t)),
       (this._handlers = {}),
@@ -248,25 +248,25 @@ var objectFitImages = (function () {
       l.each(
         ['onResize', 'onThrottledResize'],
         l.proxy(function (t, e) {
-          this._handlers[e] = l.proxy(this[e], this)
+          this._handlers[e] = l.proxy(this[e], this);
         }, this)
       ),
       l.each(
         c.Plugins,
         l.proxy(function (t, e) {
-          this._plugins[t.charAt(0).toLowerCase() + t.slice(1)] = new e(this)
+          this._plugins[t.charAt(0).toLowerCase() + t.slice(1)] = new e(this);
         }, this)
       ),
       l.each(
         c.Workers,
         l.proxy(function (t, e) {
-          this._pipe.push({ filter: e.filter, run: l.proxy(e.run, this) })
+          this._pipe.push({ filter: e.filter, run: l.proxy(e.run, this) });
         }, this)
       ),
       this.setup(),
-      this.initialize()
+      this.initialize();
   }
-  ;(c.Defaults = {
+  (c.Defaults = {
     items: 3,
     loop: !1,
     center: !1,
@@ -311,19 +311,19 @@ var objectFitImages = (function () {
       {
         filter: ['width', 'settings'],
         run: function () {
-          this._width = this.$element.width()
+          this._width = this.$element.width();
         },
       },
       {
         filter: ['width', 'items', 'settings'],
         run: function (t) {
-          t.current = this._items && this._items[this.relative(this._current)]
+          t.current = this._items && this._items[this.relative(this._current)];
         },
       },
       {
         filter: ['items', 'settings'],
         run: function () {
-          this.$stage.children('.cloned').remove()
+          this.$stage.children('.cloned').remove();
         },
       },
       {
@@ -336,8 +336,8 @@ var objectFitImages = (function () {
               width: 'auto',
               'margin-left': n ? e : '',
               'margin-right': n ? '' : e,
-            }
-          i || this.$stage.children().css(e), (t.css = e)
+            };
+          i || this.$stage.children().css(e), (t.css = e);
         },
       },
       {
@@ -349,15 +349,15 @@ var objectFitImages = (function () {
             i = null,
             n = this._items.length,
             s = !this.settings.autoWidth,
-            o = []
+            o = [];
           for (t.items = { merge: !1, width: e }; n--; )
             (i = this._mergers[n]),
               (i =
                 (this.settings.mergeFit && Math.min(i, this.settings.items)) ||
                 i),
               (t.items.merge = 1 < i || t.items.merge),
-              (o[n] = s ? e * i : this._items[n].width())
-          this._widths = o
+              (o[n] = s ? e * i : this._items[n].width());
+          this._widths = o;
         },
       },
       {
@@ -370,15 +370,15 @@ var objectFitImages = (function () {
             s = 2 * Math.ceil(e.length / 2),
             o = i.loop && e.length ? (i.rewind ? n : Math.max(n, s)) : 0,
             r = '',
-            a = ''
+            a = '';
           for (o /= 2; o--; )
             t.push(this.normalize(t.length / 2, !0)),
               (r += e[t[t.length - 1]][0].outerHTML),
               t.push(this.normalize(e.length - 1 - (t.length - 1) / 2, !0)),
-              (a = e[t[t.length - 1]][0].outerHTML + a)
-          ;(this._clones = t),
+              (a = e[t[t.length - 1]][0].outerHTML + a);
+          (this._clones = t),
             l(r).addClass('cloned').appendTo(this.$stage),
-            l(a).addClass('cloned').prependTo(this.$stage)
+            l(a).addClass('cloned').prependTo(this.$stage);
         },
       },
       {
@@ -396,8 +396,8 @@ var objectFitImages = (function () {
           )
             (t = o[s - 1] || 0),
               (e = this._widths[this.relative(s)] + this.settings.margin),
-              o.push(t + e * i)
-          this._coordinates = o
+              o.push(t + e * i);
+          this._coordinates = o;
         },
       },
       {
@@ -409,8 +409,8 @@ var objectFitImages = (function () {
               width: Math.ceil(Math.abs(e[e.length - 1])) + 2 * t,
               'padding-left': t || '',
               'padding-right': t || '',
-            }
-          this.$stage.css(t)
+            };
+          this.$stage.css(t);
         },
       },
       {
@@ -418,36 +418,35 @@ var objectFitImages = (function () {
         run: function (t) {
           var e = this._coordinates.length,
             i = !this.settings.autoWidth,
-            n = this.$stage.children()
+            n = this.$stage.children();
           if (i && t.items.merge)
             for (; e--; )
-              (t.css.width = this._widths[this.relative(e)]), n.eq(e).css(t.css)
-          else i && ((t.css.width = t.items.width), n.css(t.css))
+              (t.css.width = this._widths[this.relative(e)]),
+                n.eq(e).css(t.css);
+          else i && ((t.css.width = t.items.width), n.css(t.css));
         },
       },
       {
         filter: ['items'],
         run: function () {
-          this._coordinates.length < 1 && this.$stage.removeAttr('style')
+          this._coordinates.length < 1 && this.$stage.removeAttr('style');
         },
       },
       {
         filter: ['width', 'items', 'settings'],
         run: function (t) {
-          ;(t.current = t.current
-            ? this.$stage.children().index(t.current)
-            : 0),
+          (t.current = t.current ? this.$stage.children().index(t.current) : 0),
             (t.current = Math.max(
               this.minimum(),
               Math.min(this.maximum(), t.current)
             )),
-            this.reset(t.current)
+            this.reset(t.current);
         },
       },
       {
         filter: ['position'],
         run: function () {
-          this.animate(this.coordinates(this._current))
+          this.animate(this.coordinates(this._current));
         },
       },
       {
@@ -470,19 +469,19 @@ var objectFitImages = (function () {
               (e = Math.abs(this._coordinates[a]) + n * i),
               ((this.op(t, '<=', s) && this.op(t, '>', o)) ||
                 (this.op(e, '<', s) && this.op(e, '>', o))) &&
-                r.push(a)
+                r.push(a);
           this.$stage.children('.active').removeClass('active'),
             this.$stage
               .children(':eq(' + r.join('), :eq(') + ')')
               .addClass('active'),
             this.settings.center &&
               (this.$stage.children('.center').removeClass('center'),
-              this.$stage.children().eq(this.current()).addClass('center'))
+              this.$stage.children().eq(this.current()).addClass('center'));
         },
       },
     ]),
     (c.prototype.initialize = function () {
-      var t, e
+      var t, e;
       this.enter('initializing'),
         this.trigger('initialize'),
         this.$element.toggleClass(this.settings.rtlClass, this.settings.rtl),
@@ -512,16 +511,16 @@ var objectFitImages = (function () {
           .addClass(this.options.loadedClass),
         this.registerEventHandlers(),
         this.leave('initializing'),
-        this.trigger('initialized')
+        this.trigger('initialized');
     }),
     (c.prototype.setup = function () {
       var e = this.viewport(),
         t = this.options.responsive,
         i = -1,
-        n = null
+        n = null;
       t
         ? (l.each(t, function (t) {
-            t <= e && i < t && (i = Number(t))
+            t <= e && i < t && (i = Number(t));
           }),
           'function' ==
             typeof (n = l.extend({}, this.options, t[i])).stagePadding &&
@@ -547,14 +546,14 @@ var objectFitImages = (function () {
         this.invalidate('settings'),
         this.trigger('changed', {
           property: { name: 'settings', value: this.settings },
-        })
+        });
     }),
     (c.prototype.optionsLogic = function () {
       this.settings.autoWidth &&
-        ((this.settings.stagePadding = !1), (this.settings.merge = !1))
+        ((this.settings.stagePadding = !1), (this.settings.merge = !1));
     }),
     (c.prototype.prepare = function (t) {
-      var e = this.trigger('prepare', { content: t })
+      var e = this.trigger('prepare', { content: t });
       return (
         e.data ||
           (e.data = l('<' + this.settings.itemElement + '/>')
@@ -562,14 +561,14 @@ var objectFitImages = (function () {
             .append(t)),
         this.trigger('prepared', { content: e.data }),
         e.data
-      )
+      );
     }),
     (c.prototype.update = function () {
       for (
         var t = 0,
           e = this._pipe.length,
           i = l.proxy(function (t) {
-            return this[t]
+            return this[t];
           }, this._invalidated),
           n = {};
         t < e;
@@ -577,18 +576,18 @@ var objectFitImages = (function () {
       )
         (this._invalidated.all || 0 < l.grep(this._pipe[t].filter, i).length) &&
           this._pipe[t].run(n),
-          t++
-      ;(this._invalidated = {}), this.is('valid') || this.enter('valid')
+          t++;
+      (this._invalidated = {}), this.is('valid') || this.enter('valid');
     }),
     (c.prototype.width = function (t) {
       switch ((t = t || c.Width.Default)) {
         case c.Width.Inner:
         case c.Width.Outer:
-          return this._width
+          return this._width;
         default:
           return (
             this._width - 2 * this.settings.stagePadding + this.settings.margin
-          )
+          );
       }
     }),
     (c.prototype.refresh = function () {
@@ -600,14 +599,14 @@ var objectFitImages = (function () {
         this.update(),
         this.$element.removeClass(this.options.refreshClass),
         this.leave('refreshing'),
-        this.trigger('refreshed')
+        this.trigger('refreshed');
     }),
     (c.prototype.onThrottledResize = function () {
       i.clearTimeout(this.resizeTimer),
         (this.resizeTimer = i.setTimeout(
           this._handlers.onResize,
           this.settings.responsiveRefreshRate
-        ))
+        ));
     }),
     (c.prototype.onResize = function () {
       return (
@@ -621,7 +620,7 @@ var objectFitImages = (function () {
             this.refresh(),
             this.leave('resizing'),
             void this.trigger('resized')))
-      )
+      );
     }),
     (c.prototype.registerEventHandlers = function () {
       l.support.transition &&
@@ -637,7 +636,7 @@ var objectFitImages = (function () {
           this.$stage.on(
             'dragstart.owl.core selectstart.owl.core',
             function () {
-              return !1
+              return !1;
             }
           )),
         this.settings.touchDrag &&
@@ -645,10 +644,13 @@ var objectFitImages = (function () {
             'touchstart.owl.core',
             l.proxy(this.onDragStart, this)
           ),
-          this.$stage.on('touchcancel.owl.core', l.proxy(this.onDragEnd, this)))
+          this.$stage.on(
+            'touchcancel.owl.core',
+            l.proxy(this.onDragEnd, this)
+          ));
     }),
     (c.prototype.onDragStart = function (t) {
-      var e = null
+      var e = null;
       3 !== t.which &&
         ((e = l.support.transform
           ? {
@@ -688,7 +690,7 @@ var objectFitImages = (function () {
         l(n).one(
           'mousemove.owl.core touchmove.owl.core',
           l.proxy(function (t) {
-            var e = this.difference(this._drag.pointer, this.pointer(t))
+            var e = this.difference(this._drag.pointer, this.pointer(t));
             l(n).on(
               'mousemove.owl.core touchmove.owl.core',
               l.proxy(this.onDragMove, this)
@@ -696,16 +698,16 @@ var objectFitImages = (function () {
               (Math.abs(e.x) < Math.abs(e.y) && this.is('valid')) ||
                 (t.preventDefault(),
                 this.enter('dragging'),
-                this.trigger('drag'))
+                this.trigger('drag'));
           }, this)
-        ))
+        ));
     }),
     (c.prototype.onDragMove = function (t) {
       var e,
         i = null,
         n = null,
         s = this.difference(this._drag.pointer, this.pointer(t)),
-        o = this.difference(this._drag.stage.start, s)
+        o = this.difference(this._drag.stage.start, s);
       this.is('dragging') &&
         (t.preventDefault(),
         this.settings.loop
@@ -721,12 +723,12 @@ var objectFitImages = (function () {
             (e = this.settings.pullDrag ? (-1 * s.x) / 5 : 0),
             (o.x = Math.max(Math.min(o.x, i + e), n + e))),
         (this._drag.stage.current = o),
-        this.animate(o.x))
+        this.animate(o.x));
     }),
     (c.prototype.onDragEnd = function (t) {
       var e = this.difference(this._drag.pointer, this.pointer(t)),
         i = this._drag.stage.current,
-        t = (0 < e.x) ^ this.settings.rtl ? 'left' : 'right'
+        t = (0 < e.x) ^ this.settings.rtl ? 'left' : 'right';
       l(n).off('.owl.core'),
         this.$element.removeClass(this.options.grabClass),
         ((0 !== e.x && this.is('dragging')) || !this.is('valid')) &&
@@ -737,14 +739,15 @@ var objectFitImages = (function () {
           (this._drag.direction = t),
           (3 < Math.abs(e.x) || 300 < new Date().getTime() - this._drag.time) &&
             this._drag.target.one('click.owl.core', function () {
-              return !1
+              return !1;
             })),
-        this.is('dragging') && (this.leave('dragging'), this.trigger('dragged'))
+        this.is('dragging') &&
+          (this.leave('dragging'), this.trigger('dragged'));
     }),
     (c.prototype.closest = function (i, n) {
       var s = -1,
         o = this.width(),
-        r = this.coordinates()
+        r = this.coordinates();
       return (
         this.settings.freeDrag ||
           l.each(
@@ -759,7 +762,7 @@ var objectFitImages = (function () {
                     this.op(i, '>', r[t + 1] || e - o) &&
                     (s = 'left' === n ? t + 1 : t),
                 -1 === s
-              )
+              );
             }, this)
           ),
         this.settings.loop ||
@@ -767,10 +770,10 @@ var objectFitImages = (function () {
             ? (s = i = this.minimum())
             : this.op(i, '<', r[this.maximum()]) && (s = i = this.maximum())),
         s
-      )
+      );
     }),
     (c.prototype.animate = function (t) {
-      var e = 0 < this.speed()
+      var e = 0 < this.speed();
       this.is('animating') && this.onTransitionEnd(),
         e && (this.enter('animating'), this.trigger('translate')),
         l.support.transform3d && l.support.transition
@@ -785,10 +788,10 @@ var objectFitImages = (function () {
               this.settings.fallbackEasing,
               l.proxy(this.onTransitionEnd, this)
             )
-          : this.$stage.css({ left: t + 'px' })
+          : this.$stage.css({ left: t + 'px' });
     }),
     (c.prototype.is = function (t) {
-      return this._states.current[t] && 0 < this._states.current[t]
+      return this._states.current[t] && 0 < this._states.current[t];
     }),
     (c.prototype.current = function (t) {
       return t === o
@@ -805,8 +808,8 @@ var objectFitImages = (function () {
             this.trigger('changed', {
               property: { name: 'position', value: this._current },
             })),
-          this._current)
-      var e
+          this._current);
+      var e;
     }),
     (c.prototype.invalidate = function (t) {
       return (
@@ -814,39 +817,39 @@ var objectFitImages = (function () {
           ((this._invalidated[t] = !0),
           this.is('valid') && this.leave('valid')),
         l.map(this._invalidated, function (t, e) {
-          return e
+          return e;
         })
-      )
+      );
     }),
     (c.prototype.reset = function (t) {
-      ;(t = this.normalize(t)) !== o &&
+      (t = this.normalize(t)) !== o &&
         ((this._speed = 0),
         (this._current = t),
         this.suppress(['translate', 'translated']),
         this.animate(this.coordinates(t)),
-        this.release(['translate', 'translated']))
+        this.release(['translate', 'translated']));
     }),
     (c.prototype.normalize = function (t, e) {
       var i = this._items.length,
-        e = e ? 0 : this._clones.length
+        e = e ? 0 : this._clones.length;
       return (
         !this.isNumeric(t) || i < 1
           ? (t = o)
           : (t < 0 || i + e <= t) &&
             (t = ((((t - e / 2) % i) + i) % i) + e / 2),
         t
-      )
+      );
     }),
     (c.prototype.relative = function (t) {
-      return (t -= this._clones.length / 2), this.normalize(t, !0)
+      return (t -= this._clones.length / 2), this.normalize(t, !0);
     }),
     (c.prototype.maximum = function (t) {
       var e,
         i,
         n,
         s = this.settings,
-        o = this._coordinates.length
-      if (s.loop) o = this._clones.length / 2 + this._items.length - 1
+        o = this._coordinates.length;
+      if (s.loop) o = this._clones.length / 2 + this._items.length - 1;
       else if (s.autoWidth || s.merge) {
         for (
           e = this._items.length,
@@ -855,50 +858,50 @@ var objectFitImages = (function () {
           e-- && !(n < (i += this._items[e].width() + this.settings.margin));
 
         );
-        o = e + 1
+        o = e + 1;
       } else
-        o = s.center ? this._items.length - 1 : this._items.length - s.items
-      return t && (o -= this._clones.length / 2), Math.max(o, 0)
+        o = s.center ? this._items.length - 1 : this._items.length - s.items;
+      return t && (o -= this._clones.length / 2), Math.max(o, 0);
     }),
     (c.prototype.minimum = function (t) {
-      return t ? 0 : this._clones.length / 2
+      return t ? 0 : this._clones.length / 2;
     }),
     (c.prototype.items = function (t) {
       return t === o
         ? this._items.slice()
-        : ((t = this.normalize(t, !0)), this._items[t])
+        : ((t = this.normalize(t, !0)), this._items[t]);
     }),
     (c.prototype.mergers = function (t) {
       return t === o
         ? this._mergers.slice()
-        : ((t = this.normalize(t, !0)), this._mergers[t])
+        : ((t = this.normalize(t, !0)), this._mergers[t]);
     }),
     (c.prototype.clones = function (i) {
       function n(t) {
-        return t % 2 == 0 ? s + t / 2 : e - (t + 1) / 2
+        return t % 2 == 0 ? s + t / 2 : e - (t + 1) / 2;
       }
       var e = this._clones.length / 2,
-        s = e + this._items.length
+        s = e + this._items.length;
       return i === o
         ? l.map(this._clones, function (t, e) {
-            return n(e)
+            return n(e);
           })
         : l.map(this._clones, function (t, e) {
-            return t === i ? n(e) : null
-          })
+            return t === i ? n(e) : null;
+          });
     }),
     (c.prototype.speed = function (t) {
-      return t !== o && (this._speed = t), this._speed
+      return t !== o && (this._speed = t), this._speed;
     }),
     (c.prototype.coordinates = function (t) {
       var e,
         i = 1,
-        n = t - 1
+        n = t - 1;
       return t === o
         ? l.map(
             this._coordinates,
             l.proxy(function (t, e) {
-              return this.coordinates(e)
+              return this.coordinates(e);
             }, this)
           )
         : (this.settings.center
@@ -906,13 +909,13 @@ var objectFitImages = (function () {
               (e = this._coordinates[t]),
               (e += ((this.width() - e + (this._coordinates[n] || 0)) / 2) * i))
             : (e = this._coordinates[n] || 0),
-          (e = Math.ceil(e)))
+          (e = Math.ceil(e)));
     }),
     (c.prototype.duration = function (t, e, i) {
       return 0 === i
         ? 0
         : Math.min(Math.max(Math.abs(e - t), 1), 6) *
-            Math.abs(i || this.settings.smartSpeed)
+            Math.abs(i || this.settings.smartSpeed);
     }),
     (c.prototype.to = function (t, e) {
       var i,
@@ -921,7 +924,7 @@ var objectFitImages = (function () {
         o = (0 < s) - (s < 0),
         r = this._items.length,
         a = this.minimum(),
-        l = this.maximum()
+        l = this.maximum();
       this.settings.loop
         ? (!this.settings.rewind && Math.abs(s) > r / 2 && (s += -1 * o * r),
           (i = (((((t = n + s) - a) % r) + r) % r) + a) !== t &&
@@ -933,13 +936,13 @@ var objectFitImages = (function () {
             : Math.max(a, Math.min(l, t))),
         this.speed(this.duration(n, t, e)),
         this.current(t),
-        this.$element.is(':visible') && this.update()
+        this.$element.is(':visible') && this.update();
     }),
     (c.prototype.next = function (t) {
-      ;(t = t || !1), this.to(this.relative(this.current()) + 1, t)
+      (t = t || !1), this.to(this.relative(this.current()) + 1, t);
     }),
     (c.prototype.prev = function (t) {
-      ;(t = t || !1), this.to(this.relative(this.current()) - 1, t)
+      (t = t || !1), this.to(this.relative(this.current()) - 1, t);
     }),
     (c.prototype.onTransitionEnd = function (t) {
       if (
@@ -947,11 +950,11 @@ var objectFitImages = (function () {
         (t.stopPropagation(),
         (t.target || t.srcElement || t.originalTarget) !== this.$stage.get(0))
       )
-        return !1
-      this.leave('animating'), this.trigger('translated')
+        return !1;
+      this.leave('animating'), this.trigger('translated');
     }),
     (c.prototype.viewport = function () {
-      var t
+      var t;
       return (
         this.options.responsiveBaseElement !== i
           ? (t = l(this.options.responsiveBaseElement).width())
@@ -961,7 +964,7 @@ var objectFitImages = (function () {
           ? (t = n.documentElement.clientWidth)
           : console.warn('Can not detect viewport width.'),
         t
-      )
+      );
     }),
     (c.prototype.replace = function (t) {
       this.$stage.empty(),
@@ -971,11 +974,11 @@ var objectFitImages = (function () {
           ? t.find('.' + this.settings.nestedItemSelector)
           : t)
           .filter(function () {
-            return 1 === this.nodeType
+            return 1 === this.nodeType;
           })
           .each(
             l.proxy(function (t, e) {
-              ;(e = this.prepare(e)),
+              (e = this.prepare(e)),
                 this.$stage.append(e),
                 this._items.push(e),
                 this._mergers.push(
@@ -983,7 +986,7 @@ var objectFitImages = (function () {
                     .find('[data-merge]')
                     .addBack('[data-merge]')
                     .attr('data-merge') || 1
-                )
+                );
             }, this)
           ),
         this.reset(
@@ -991,11 +994,11 @@ var objectFitImages = (function () {
             ? this.settings.startPosition
             : 0
         ),
-        this.invalidate('items')
+        this.invalidate('items');
     }),
     (c.prototype.add = function (t, e) {
-      var i = this.relative(this._current)
-      ;(e = e === o ? this._items.length : this.normalize(e, !0)),
+      var i = this.relative(this._current);
+      (e = e === o ? this._items.length : this.normalize(e, !0)),
         (t = t instanceof jQuery ? t : l(t)),
         this.trigger('add', { content: t, position: e }),
         (t = this.prepare(t)),
@@ -1021,16 +1024,16 @@ var objectFitImages = (function () {
             )),
         this._items[i] && this.reset(this._items[i].index()),
         this.invalidate('items'),
-        this.trigger('added', { content: t, position: e })
+        this.trigger('added', { content: t, position: e });
     }),
     (c.prototype.remove = function (t) {
-      ;(t = this.normalize(t, !0)) !== o &&
+      (t = this.normalize(t, !0)) !== o &&
         (this.trigger('remove', { content: this._items[t], position: t }),
         this._items[t].remove(),
         this._items.splice(t, 1),
         this._mergers.splice(t, 1),
         this.invalidate('items'),
-        this.trigger('removed', { content: null, position: t }))
+        this.trigger('removed', { content: null, position: t }));
     }),
     (c.prototype.preloadAutoWidthImages = function (t) {
       t.each(
@@ -1046,15 +1049,15 @@ var objectFitImages = (function () {
                     this.leave('pre-loading'),
                     this.is('pre-loading') ||
                       this.is('initializing') ||
-                      this.refresh()
+                      this.refresh();
                 }, this)
               )
               .attr(
                 'src',
                 e.attr('src') || e.attr('data-src') || e.attr('data-src-retina')
-              )
+              );
         }, this)
-      )
+      );
     }),
     (c.prototype.destroy = function () {
       for (var t in (this.$element.off('.owl.core'),
@@ -1064,7 +1067,7 @@ var objectFitImages = (function () {
         (i.clearTimeout(this.resizeTimer),
         this.off(i, 'resize', this._handlers.onThrottledResize)),
       this._plugins))
-        this._plugins[t].destroy()
+        this._plugins[t].destroy();
       this.$stage.children('.cloned').remove(),
         this.$stage.unwrap(),
         this.$stage.children().contents().unwrap(),
@@ -1085,37 +1088,37 @@ var objectFitImages = (function () {
                 ''
               )
           )
-          .removeData('owl.carousel')
+          .removeData('owl.carousel');
     }),
     (c.prototype.op = function (t, e, i) {
-      var n = this.settings.rtl
+      var n = this.settings.rtl;
       switch (e) {
         case '<':
-          return n ? i < t : t < i
+          return n ? i < t : t < i;
         case '>':
-          return n ? t < i : i < t
+          return n ? t < i : i < t;
         case '>=':
-          return n ? t <= i : i <= t
+          return n ? t <= i : i <= t;
         case '<=':
-          return n ? i <= t : t <= i
+          return n ? i <= t : t <= i;
       }
     }),
     (c.prototype.on = function (t, e, i, n) {
       t.addEventListener
         ? t.addEventListener(e, i, n)
-        : t.attachEvent && t.attachEvent('on' + e, i)
+        : t.attachEvent && t.attachEvent('on' + e, i);
     }),
     (c.prototype.off = function (t, e, i, n) {
       t.removeEventListener
         ? t.removeEventListener(e, i, n)
-        : t.detachEvent && t.detachEvent('on' + e, i)
+        : t.detachEvent && t.detachEvent('on' + e, i);
     }),
     (c.prototype.trigger = function (t, e, i, n, s) {
       var o = { item: { count: this._items.length, index: this.current() } },
         r = l.camelCase(
           l
             .grep(['on', t, i], function (t) {
-              return t
+              return t;
             })
             .join('-')
             .toLowerCase()
@@ -1123,11 +1126,11 @@ var objectFitImages = (function () {
         a = l.Event(
           [t, 'owl', i || 'carousel'].join('.').toLowerCase(),
           l.extend({ relatedTarget: this }, o, e)
-        )
+        );
       return (
         this._supress[t] ||
           (l.each(this._plugins, function (t, e) {
-            e.onTrigger && e.onTrigger(a)
+            e.onTrigger && e.onTrigger(a);
           }),
           this.register({ type: c.Type.Event, name: t }),
           this.$element.trigger(a),
@@ -1135,27 +1138,27 @@ var objectFitImages = (function () {
             'function' == typeof this.settings[r] &&
             this.settings[r].call(this, a)),
         a
-      )
+      );
     }),
     (c.prototype.enter = function (t) {
       l.each(
         [t].concat(this._states.tags[t] || []),
         l.proxy(function (t, e) {
           this._states.current[e] === o && (this._states.current[e] = 0),
-            this._states.current[e]++
+            this._states.current[e]++;
         }, this)
-      )
+      );
     }),
     (c.prototype.leave = function (t) {
       l.each(
         [t].concat(this._states.tags[t] || []),
         l.proxy(function (t, e) {
-          this._states.current[e]--
+          this._states.current[e]--;
         }, this)
-      )
+      );
     }),
     (c.prototype.register = function (i) {
-      var e
+      var e;
       i.type === c.Type.Event
         ? (l.event.special[i.name] || (l.event.special[i.name] = {}),
           l.event.special[i.name].owl ||
@@ -1165,7 +1168,7 @@ var objectFitImages = (function () {
                 !e.apply ||
                 (t.namespace && -1 !== t.namespace.indexOf('owl'))
                 ? t.namespace && -1 < t.namespace.indexOf('owl')
-                : e.apply(this, arguments)
+                : e.apply(this, arguments);
             }),
             (l.event.special[i.name].owl = !0)))
         : i.type === c.Type.State &&
@@ -1177,28 +1180,28 @@ var objectFitImages = (function () {
           (this._states.tags[i.name] = l.grep(
             this._states.tags[i.name],
             l.proxy(function (t, e) {
-              return l.inArray(t, this._states.tags[i.name]) === e
+              return l.inArray(t, this._states.tags[i.name]) === e;
             }, this)
-          )))
+          )));
     }),
     (c.prototype.suppress = function (t) {
       l.each(
         t,
         l.proxy(function (t, e) {
-          this._supress[e] = !0
+          this._supress[e] = !0;
         }, this)
-      )
+      );
     }),
     (c.prototype.release = function (t) {
       l.each(
         t,
         l.proxy(function (t, e) {
-          delete this._supress[e]
+          delete this._supress[e];
         }, this)
-      )
+      );
     }),
     (c.prototype.pointer = function (t) {
-      var e = { x: null, y: null }
+      var e = { x: null, y: null };
       return (
         (t =
           (t = t.originalEvent || t || i.event).touches && t.touches.length
@@ -1209,19 +1212,19 @@ var objectFitImages = (function () {
           ? ((e.x = t.pageX), (e.y = t.pageY))
           : ((e.x = t.clientX), (e.y = t.clientY)),
         e
-      )
+      );
     }),
     (c.prototype.isNumeric = function (t) {
-      return !isNaN(parseFloat(t))
+      return !isNaN(parseFloat(t));
     }),
     (c.prototype.difference = function (t, e) {
-      return { x: t.x - e.x, y: t.y - e.y }
+      return { x: t.x - e.x, y: t.y - e.y };
     }),
     (l.fn.owlCarousel = function (e) {
-      var n = Array.prototype.slice.call(arguments, 1)
+      var n = Array.prototype.slice.call(arguments, 1);
       return this.each(function () {
         var t = l(this),
-          i = t.data('owl.carousel')
+          i = t.data('owl.carousel');
         i ||
           ((i = new c(this, 'object' == typeof e && e)),
           t.data('owl.carousel', i),
@@ -1245,37 +1248,37 @@ var objectFitImages = (function () {
                       t.relatedTarget !== this &&
                       (this.suppress([e]),
                       i[e].apply(this, [].slice.call(arguments, 1)),
-                      this.release([e]))
+                      this.release([e]));
                   }, i)
-                )
+                );
             }
           )),
-          'string' == typeof e && '_' !== e.charAt(0) && i[e].apply(i, n)
-      })
+          'string' == typeof e && '_' !== e.charAt(0) && i[e].apply(i, n);
+      });
     }),
-    (l.fn.owlCarousel.Constructor = c)
+    (l.fn.owlCarousel.Constructor = c);
 })(window.Zepto || window.jQuery, window, document),
   (function (e, i) {
     function n(t) {
-      ;(this._core = t),
+      (this._core = t),
         (this._interval = null),
         (this._visible = null),
         (this._handlers = {
           'initialized.owl.carousel': e.proxy(function (t) {
-            t.namespace && this._core.settings.autoRefresh && this.watch()
+            t.namespace && this._core.settings.autoRefresh && this.watch();
           }, this),
         }),
         (this._core.options = e.extend({}, n.Defaults, this._core.options)),
-        this._core.$element.on(this._handlers)
+        this._core.$element.on(this._handlers);
     }
-    ;(n.Defaults = { autoRefresh: !0, autoRefreshInterval: 500 }),
+    (n.Defaults = { autoRefresh: !0, autoRefreshInterval: 500 }),
       (n.prototype.watch = function () {
         this._interval ||
           ((this._visible = this._core.$element.is(':visible')),
           (this._interval = i.setInterval(
             e.proxy(this.refresh, this),
             this._core.settings.autoRefreshInterval
-          )))
+          )));
       }),
       (n.prototype.refresh = function () {
         this._core.$element.is(':visible') !== this._visible &&
@@ -1283,20 +1286,20 @@ var objectFitImages = (function () {
           this._core.$element.toggleClass('owl-hidden', !this._visible),
           this._visible &&
             this._core.invalidate('width') &&
-            this._core.refresh())
+            this._core.refresh());
       }),
       (n.prototype.destroy = function () {
-        var t, e
+        var t, e;
         for (t in (i.clearInterval(this._interval), this._handlers))
-          this._core.$element.off(t, this._handlers[t])
+          this._core.$element.off(t, this._handlers[t]);
         for (e in Object.getOwnPropertyNames(this))
-          'function' != typeof this[e] && (this[e] = null)
+          'function' != typeof this[e] && (this[e] = null);
       }),
-      (e.fn.owlCarousel.Constructor.Plugins.AutoRefresh = n)
+      (e.fn.owlCarousel.Constructor.Plugins.AutoRefresh = n);
   })(window.Zepto || window.jQuery, window, document),
   (function (a, s) {
     function e(t) {
-      ;(this._core = t),
+      (this._core = t),
         (this._loaded = []),
         (this._handlers = {
           'initialized.owl.carousel change.owl.carousel resized.owl.carousel':
@@ -1318,23 +1321,23 @@ var objectFitImages = (function () {
                         : this._core.current()) + n,
                     o = this._core.clones().length,
                     r = a.proxy(function (t, e) {
-                      this.load(e)
+                      this.load(e);
                     }, this);
                   n++ < i;
 
                 )
                   this.load(o / 2 + this._core.relative(s)),
                     o && a.each(this._core.clones(this._core.relative(s)), r),
-                    s++
+                    s++;
             }, this),
         }),
         (this._core.options = a.extend({}, e.Defaults, this._core.options)),
-        this._core.$element.on(this._handlers)
+        this._core.$element.on(this._handlers);
     }
-    ;(e.Defaults = { lazyLoad: !1 }),
+    (e.Defaults = { lazyLoad: !1 }),
       (e.prototype.load = function (t) {
         var e = this._core.$stage.children().eq(t),
-          t = e && e.find('.owl-lazy')
+          t = e && e.find('.owl-lazy');
         !t ||
           -1 < a.inArray(e.get(0), this._loaded) ||
           (t.each(
@@ -1342,7 +1345,7 @@ var objectFitImages = (function () {
               var i = a(e),
                 n =
                   (1 < s.devicePixelRatio && i.attr('data-src-retina')) ||
-                  i.attr('data-src')
+                  i.attr('data-src');
               this._core.trigger('load', { element: i, url: n }, 'lazy'),
                 i.is('img')
                   ? i
@@ -1354,7 +1357,7 @@ var objectFitImages = (function () {
                               'loaded',
                               { element: i, url: n },
                               'lazy'
-                            )
+                            );
                         }, this)
                       )
                       .attr('src', n)
@@ -1367,74 +1370,74 @@ var objectFitImages = (function () {
                           'loaded',
                           { element: i, url: n },
                           'lazy'
-                        )
+                        );
                     }, this)),
-                    (e.src = n))
+                    (e.src = n));
             }, this)
           ),
-          this._loaded.push(e.get(0)))
+          this._loaded.push(e.get(0)));
       }),
       (e.prototype.destroy = function () {
-        var t, e
-        for (t in this.handlers) this._core.$element.off(t, this.handlers[t])
+        var t, e;
+        for (t in this.handlers) this._core.$element.off(t, this.handlers[t]);
         for (e in Object.getOwnPropertyNames(this))
-          'function' != typeof this[e] && (this[e] = null)
+          'function' != typeof this[e] && (this[e] = null);
       }),
-      (a.fn.owlCarousel.Constructor.Plugins.Lazy = e)
+      (a.fn.owlCarousel.Constructor.Plugins.Lazy = e);
   })(window.Zepto || window.jQuery, window, document),
   (function (n) {
     function e(t) {
-      ;(this._core = t),
+      (this._core = t),
         (this._handlers = {
           'initialized.owl.carousel refreshed.owl.carousel': n.proxy(function (
             t
           ) {
-            t.namespace && this._core.settings.autoHeight && this.update()
+            t.namespace && this._core.settings.autoHeight && this.update();
           },
           this),
           'changed.owl.carousel': n.proxy(function (t) {
             t.namespace &&
               this._core.settings.autoHeight &&
               'position' == t.property.name &&
-              this.update()
+              this.update();
           }, this),
           'loaded.owl.lazy': n.proxy(function (t) {
             t.namespace &&
               this._core.settings.autoHeight &&
               t.element.closest('.' + this._core.settings.itemClass).index() ===
                 this._core.current() &&
-              this.update()
+              this.update();
           }, this),
         }),
         (this._core.options = n.extend({}, e.Defaults, this._core.options)),
-        this._core.$element.on(this._handlers)
+        this._core.$element.on(this._handlers);
     }
-    ;(e.Defaults = { autoHeight: !1, autoHeightClass: 'owl-height' }),
+    (e.Defaults = { autoHeight: !1, autoHeightClass: 'owl-height' }),
       (e.prototype.update = function () {
         var t = this._core._current,
           e = t + this._core.settings.items,
           t = this._core.$stage.children().toArray().slice(t, e),
-          i = []
+          i = [];
         n.each(t, function (t, e) {
-          i.push(n(e).height())
+          i.push(n(e).height());
         }),
           (e = Math.max.apply(null, i)),
           this._core.$stage
             .parent()
             .height(e)
-            .addClass(this._core.settings.autoHeightClass)
+            .addClass(this._core.settings.autoHeightClass);
       }),
       (e.prototype.destroy = function () {
-        var t, e
-        for (t in this._handlers) this._core.$element.off(t, this._handlers[t])
+        var t, e;
+        for (t in this._handlers) this._core.$element.off(t, this._handlers[t]);
         for (e in Object.getOwnPropertyNames(this))
-          'function' != typeof this[e] && (this[e] = null)
+          'function' != typeof this[e] && (this[e] = null);
       }),
-      (n.fn.owlCarousel.Constructor.Plugins.AutoHeight = e)
+      (n.fn.owlCarousel.Constructor.Plugins.AutoHeight = e);
   })(window.Zepto || window.jQuery, (window, document)),
   (function (u, e) {
     function i(t) {
-      ;(this._core = t),
+      (this._core = t),
         (this._videos = {}),
         (this._playing = null),
         (this._handlers = {
@@ -1444,30 +1447,30 @@ var objectFitImages = (function () {
                 type: 'state',
                 name: 'playing',
                 tags: ['interacting'],
-              })
+              });
           }, this),
           'resize.owl.carousel': u.proxy(function (t) {
             t.namespace &&
               this._core.settings.video &&
               this.isInFullScreen() &&
-              t.preventDefault()
+              t.preventDefault();
           }, this),
           'refreshed.owl.carousel': u.proxy(function (t) {
             t.namespace &&
               this._core.is('resizing') &&
-              this._core.$stage.find('.cloned .owl-video-frame').remove()
+              this._core.$stage.find('.cloned .owl-video-frame').remove();
           }, this),
           'changed.owl.carousel': u.proxy(function (t) {
             t.namespace &&
               'position' === t.property.name &&
               this._playing &&
-              this.stop()
+              this.stop();
           }, this),
           'prepared.owl.carousel': u.proxy(function (t) {
-            var e
+            var e;
             !t.namespace ||
               ((e = u(t.content).find('.owl-video')).length &&
-                (e.css('display', 'none'), this.fetch(e, u(t.content))))
+                (e.css('display', 'none'), this.fetch(e, u(t.content))));
           }, this),
         }),
         (this._core.options = u.extend({}, i.Defaults, this._core.options)),
@@ -1476,11 +1479,11 @@ var objectFitImages = (function () {
           'click.owl.video',
           '.owl-video-play-icon',
           u.proxy(function (t) {
-            this.play(t)
+            this.play(t);
           }, this)
-        )
+        );
     }
-    ;(i.Defaults = { video: !1, videoHeight: !1, videoWidth: !1 }),
+    (i.Defaults = { video: !1, videoHeight: !1, videoWidth: !1 }),
       (i.prototype.fetch = function (t, e) {
         var i = t.attr('data-vimeo-id')
             ? 'vimeo'
@@ -1493,35 +1496,35 @@ var objectFitImages = (function () {
             t.attr('data-vzaar-id'),
           s = t.attr('data-width') || this._core.settings.videoWidth,
           o = t.attr('data-height') || this._core.settings.videoHeight,
-          r = t.attr('href')
-        if (!r) throw new Error('Missing video URL.')
+          r = t.attr('href');
+        if (!r) throw new Error('Missing video URL.');
         if (
           -1 <
           (n = r.match(
             /(http:|https:|)\/\/(player.|www.|app.)?(vimeo\.com|youtu(be\.com|\.be|be\.googleapis\.com)|vzaar\.com)\/(video\/|videos\/|embed\/|channels\/.+\/|groups\/.+\/|watch\?v=|v\/)?([A-Za-z0-9._%-]*)(\&\S+)?/
           ))[3].indexOf('youtu')
         )
-          i = 'youtube'
-        else if (-1 < n[3].indexOf('vimeo')) i = 'vimeo'
+          i = 'youtube';
+        else if (-1 < n[3].indexOf('vimeo')) i = 'vimeo';
         else {
           if (!(-1 < n[3].indexOf('vzaar')))
-            throw new Error('Video URL not supported.')
-          i = 'vzaar'
+            throw new Error('Video URL not supported.');
+          i = 'vzaar';
         }
-        ;(n = n[6]),
+        (n = n[6]),
           (this._videos[r] = { type: i, id: n, width: s, height: o }),
           e.attr('data-video', r),
-          this.thumbnail(t, this._videos[r])
+          this.thumbnail(t, this._videos[r]);
       }),
       (i.prototype.thumbnail = function (e, t) {
         function i(t) {
-          ;(n = c.lazyLoad
+          (n = c.lazyLoad
             ? '<div class="owl-video-tn ' + l + '" ' + a + '="' + t + '"></div>'
             : '<div class="owl-video-tn" style="opacity:1;background-image:url(' +
               t +
               ')"></div>'),
             e.after(n),
-            e.after('<div class="owl-video-play-icon"></div>')
+            e.after('<div class="owl-video-play-icon"></div>');
         }
         var n,
           s,
@@ -1532,13 +1535,13 @@ var objectFitImages = (function () {
           r = e.find('img'),
           a = 'src',
           l = '',
-          c = this._core.settings
+          c = this._core.settings;
         if (
           (e.wrap('<div class="owl-video-wrapper"' + o + '></div>'),
           this._core.settings.lazyLoad && ((a = 'data-src'), (l = 'owl-lazy')),
           r.length)
         )
-          return i(r.attr(a)), r.remove(), !1
+          return i(r.attr(a)), r.remove(), !1;
         'youtube' === t.type
           ? ((s = '//img.youtube.com/vi/' + t.id + '/hqdefault.jpg'), i(s))
           : 'vimeo' === t.type
@@ -1548,7 +1551,7 @@ var objectFitImages = (function () {
               jsonp: 'callback',
               dataType: 'jsonp',
               success: function (t) {
-                ;(s = t[0].thumbnail_large), i(s)
+                (s = t[0].thumbnail_large), i(s);
               },
             })
           : 'vzaar' === t.type &&
@@ -1558,9 +1561,9 @@ var objectFitImages = (function () {
               jsonp: 'callback',
               dataType: 'jsonp',
               success: function (t) {
-                ;(s = t.framegrab_url), i(s)
+                (s = t.framegrab_url), i(s);
               },
-            })
+            });
       }),
       (i.prototype.stop = function () {
         this._core.trigger('stop', null, 'video'),
@@ -1568,14 +1571,14 @@ var objectFitImages = (function () {
           this._playing.removeClass('owl-video-playing'),
           (this._playing = null),
           this._core.leave('playing'),
-          this._core.trigger('stopped', null, 'video')
+          this._core.trigger('stopped', null, 'video');
       }),
       (i.prototype.play = function (t) {
         var e,
           i = u(t.target).closest('.' + this._core.settings.itemClass),
           n = this._videos[i.attr('data-video')],
           s = n.width || '100%',
-          t = n.height || this._core.$stage.height()
+          t = n.height || this._core.$stage.height();
         this._playing ||
           (this._core.enter('playing'),
           this._core.trigger('play', null, 'video'),
@@ -1613,27 +1616,27 @@ var objectFitImages = (function () {
           u('<div class="owl-video-frame">' + e + '</div>').insertAfter(
             i.find('.owl-video')
           ),
-          (this._playing = i.addClass('owl-video-playing')))
+          (this._playing = i.addClass('owl-video-playing')));
       }),
       (i.prototype.isInFullScreen = function () {
         var t =
           e.fullscreenElement ||
           e.mozFullScreenElement ||
-          e.webkitFullscreenElement
-        return t && u(t).parent().hasClass('owl-video-frame')
+          e.webkitFullscreenElement;
+        return t && u(t).parent().hasClass('owl-video-frame');
       }),
       (i.prototype.destroy = function () {
-        var t, e
+        var t, e;
         for (t in (this._core.$element.off('click.owl.video'), this._handlers))
-          this._core.$element.off(t, this._handlers[t])
+          this._core.$element.off(t, this._handlers[t]);
         for (e in Object.getOwnPropertyNames(this))
-          'function' != typeof this[e] && (this[e] = null)
+          'function' != typeof this[e] && (this[e] = null);
       }),
-      (u.fn.owlCarousel.Constructor.Plugins.Video = i)
+      (u.fn.owlCarousel.Constructor.Plugins.Video = i);
   })(window.Zepto || window.jQuery, (window, document)),
   (function (r) {
     function e(t) {
-      ;(this.core = t),
+      (this.core = t),
         (this.core.options = r.extend({}, e.Defaults, this.core.options)),
         (this.swapping = !0),
         (this.previous = void 0),
@@ -1643,24 +1646,24 @@ var objectFitImages = (function () {
             t.namespace &&
               'position' == t.property.name &&
               ((this.previous = this.core.current()),
-              (this.next = t.property.value))
+              (this.next = t.property.value));
           }, this),
           'drag.owl.carousel dragged.owl.carousel translated.owl.carousel':
             r.proxy(function (t) {
-              t.namespace && (this.swapping = 'translated' == t.type)
+              t.namespace && (this.swapping = 'translated' == t.type);
             }, this),
           'translate.owl.carousel': r.proxy(function (t) {
             t.namespace &&
               this.swapping &&
               (this.core.options.animateOut || this.core.options.animateIn) &&
-              this.swap()
+              this.swap();
           }, this),
         }),
-        this.core.$element.on(this.handlers)
+        this.core.$element.on(this.handlers);
     }
-    ;(e.Defaults = { animateOut: !1, animateIn: !1 }),
+    (e.Defaults = { animateOut: !1, animateIn: !1 }),
       (e.prototype.swap = function () {
-        var t, e, i, n, s, o
+        var t, e, i, n, s, o;
         1 === this.core.settings.items &&
           r.support.animation &&
           r.support.transition &&
@@ -1684,7 +1687,7 @@ var objectFitImages = (function () {
               n
                 .one(r.support.animation.end, e)
                 .addClass('animated owl-animated-in')
-                .addClass(s)))
+                .addClass(s)));
       }),
       (e.prototype.clear = function (t) {
         r(t.target)
@@ -1692,19 +1695,19 @@ var objectFitImages = (function () {
           .removeClass('animated owl-animated-out owl-animated-in')
           .removeClass(this.core.settings.animateIn)
           .removeClass(this.core.settings.animateOut),
-          this.core.onTransitionEnd()
+          this.core.onTransitionEnd();
       }),
       (e.prototype.destroy = function () {
-        var t, e
-        for (t in this.handlers) this.core.$element.off(t, this.handlers[t])
+        var t, e;
+        for (t in this.handlers) this.core.$element.off(t, this.handlers[t]);
         for (e in Object.getOwnPropertyNames(this))
-          'function' != typeof this[e] && (this[e] = null)
+          'function' != typeof this[e] && (this[e] = null);
       }),
-      (r.fn.owlCarousel.Constructor.Plugins.Animate = e)
+      (r.fn.owlCarousel.Constructor.Plugins.Animate = e);
   })(window.Zepto || window.jQuery, (window, document)),
   (function (i, n, s) {
     function e(t) {
-      ;(this._core = t),
+      (this._core = t),
         (this._timeout = null),
         (this._paused = !1),
         (this._handlers = {
@@ -1716,49 +1719,49 @@ var objectFitImages = (function () {
               : t.namespace &&
                 'position' === t.property.name &&
                 this._core.settings.autoplay &&
-                this._setAutoPlayInterval()
+                this._setAutoPlayInterval();
           }, this),
           'initialized.owl.carousel': i.proxy(function (t) {
-            t.namespace && this._core.settings.autoplay && this.play()
+            t.namespace && this._core.settings.autoplay && this.play();
           }, this),
           'play.owl.autoplay': i.proxy(function (t, e, i) {
-            t.namespace && this.play(e, i)
+            t.namespace && this.play(e, i);
           }, this),
           'stop.owl.autoplay': i.proxy(function (t) {
-            t.namespace && this.stop()
+            t.namespace && this.stop();
           }, this),
           'mouseover.owl.autoplay': i.proxy(function () {
             this._core.settings.autoplayHoverPause &&
               this._core.is('rotating') &&
-              this.pause()
+              this.pause();
           }, this),
           'mouseleave.owl.autoplay': i.proxy(function () {
             this._core.settings.autoplayHoverPause &&
               this._core.is('rotating') &&
-              this.play()
+              this.play();
           }, this),
           'touchstart.owl.core': i.proxy(function () {
             this._core.settings.autoplayHoverPause &&
               this._core.is('rotating') &&
-              this.pause()
+              this.pause();
           }, this),
           'touchend.owl.core': i.proxy(function () {
-            this._core.settings.autoplayHoverPause && this.play()
+            this._core.settings.autoplayHoverPause && this.play();
           }, this),
         }),
         this._core.$element.on(this._handlers),
-        (this._core.options = i.extend({}, e.Defaults, this._core.options))
+        (this._core.options = i.extend({}, e.Defaults, this._core.options));
     }
-    ;(e.Defaults = {
+    (e.Defaults = {
       autoplay: !1,
       autoplayTimeout: 5e3,
       autoplayHoverPause: !1,
       autoplaySpeed: !1,
     }),
       (e.prototype.play = function (t, e) {
-        ;(this._paused = !1),
+        (this._paused = !1),
           this._core.is('rotating') ||
-            (this._core.enter('rotating'), this._setAutoPlayInterval())
+            (this._core.enter('rotating'), this._setAutoPlayInterval());
       }),
       (e.prototype._getNextTimeout = function (t, e) {
         return (
@@ -1769,35 +1772,35 @@ var objectFitImages = (function () {
                 this._core.is('busy') ||
                 this._core.is('interacting') ||
                 s.hidden ||
-                this._core.next(e || this._core.settings.autoplaySpeed)
+                this._core.next(e || this._core.settings.autoplaySpeed);
             }, this),
             t || this._core.settings.autoplayTimeout
           )
-        )
+        );
       }),
       (e.prototype._setAutoPlayInterval = function () {
-        this._timeout = this._getNextTimeout()
+        this._timeout = this._getNextTimeout();
       }),
       (e.prototype.stop = function () {
         this._core.is('rotating') &&
-          (n.clearTimeout(this._timeout), this._core.leave('rotating'))
+          (n.clearTimeout(this._timeout), this._core.leave('rotating'));
       }),
       (e.prototype.pause = function () {
-        this._core.is('rotating') && (this._paused = !0)
+        this._core.is('rotating') && (this._paused = !0);
       }),
       (e.prototype.destroy = function () {
-        var t, e
+        var t, e;
         for (t in (this.stop(), this._handlers))
-          this._core.$element.off(t, this._handlers[t])
+          this._core.$element.off(t, this._handlers[t]);
         for (e in Object.getOwnPropertyNames(this))
-          'function' != typeof this[e] && (this[e] = null)
+          'function' != typeof this[e] && (this[e] = null);
       }),
-      (i.fn.owlCarousel.Constructor.Plugins.autoplay = e)
+      (i.fn.owlCarousel.Constructor.Plugins.autoplay = e);
   })(window.Zepto || window.jQuery, window, document),
   (function (s) {
-    'use strict'
+    'use strict';
     function e(t) {
-      ;(this._core = t),
+      (this._core = t),
         (this._initialized = !1),
         (this._pages = []),
         (this._controls = {}),
@@ -1821,20 +1824,20 @@ var objectFitImages = (function () {
                     .addBack('[data-dot]')
                     .attr('data-dot') +
                   '</div>'
-              )
+              );
           }, this),
           'added.owl.carousel': s.proxy(function (t) {
             t.namespace &&
               this._core.settings.dotsData &&
-              this._templates.splice(t.position, 0, this._templates.pop())
+              this._templates.splice(t.position, 0, this._templates.pop());
           }, this),
           'remove.owl.carousel': s.proxy(function (t) {
             t.namespace &&
               this._core.settings.dotsData &&
-              this._templates.splice(t.position, 1)
+              this._templates.splice(t.position, 1);
           }, this),
           'changed.owl.carousel': s.proxy(function (t) {
-            t.namespace && 'position' == t.property.name && this.draw()
+            t.namespace && 'position' == t.property.name && this.draw();
           }, this),
           'initialized.owl.carousel': s.proxy(function (t) {
             t.namespace &&
@@ -1844,7 +1847,7 @@ var objectFitImages = (function () {
               this.update(),
               this.draw(),
               (this._initialized = !0),
-              this._core.trigger('initialized', null, 'navigation'))
+              this._core.trigger('initialized', null, 'navigation'));
           }, this),
           'refreshed.owl.carousel': s.proxy(function (t) {
             t.namespace &&
@@ -1852,13 +1855,13 @@ var objectFitImages = (function () {
               (this._core.trigger('refresh', null, 'navigation'),
               this.update(),
               this.draw(),
-              this._core.trigger('refreshed', null, 'navigation'))
+              this._core.trigger('refreshed', null, 'navigation'));
           }, this),
         }),
         (this._core.options = s.extend({}, e.Defaults, this._core.options)),
-        this.$element.on(this._handlers)
+        this.$element.on(this._handlers);
     }
-    ;(e.Defaults = {
+    (e.Defaults = {
       nav: !1,
       navText: ['prev', 'next'],
       navSpeed: !1,
@@ -1877,7 +1880,7 @@ var objectFitImages = (function () {
     }),
       (e.prototype.initialize = function () {
         var t,
-          i = this._core.settings
+          i = this._core.settings;
         for (t in ((this._controls.$relative = (
           i.navContainer
             ? s(i.navContainer)
@@ -1890,7 +1893,7 @@ var objectFitImages = (function () {
           .on(
             'click',
             s.proxy(function (t) {
-              this.prev(i.navSpeed)
+              this.prev(i.navSpeed);
             }, this)
           )),
         (this._controls.$next = s('<' + i.navElement + '>')
@@ -1900,7 +1903,7 @@ var objectFitImages = (function () {
           .on(
             'click',
             s.proxy(function (t) {
-              this.next(i.navSpeed)
+              this.next(i.navSpeed);
             }, this)
           )),
         i.dotsData ||
@@ -1923,20 +1926,20 @@ var objectFitImages = (function () {
               s(t.target).parent().is(this._controls.$absolute)
                 ? s(t.target)
                 : s(t.target).parent()
-            ).index()
-            t.preventDefault(), this.to(e, i.dotsSpeed)
+            ).index();
+            t.preventDefault(), this.to(e, i.dotsSpeed);
           }, this)
         ),
         this._overrides))
-          this._core[t] = s.proxy(this[t], this)
+          this._core[t] = s.proxy(this[t], this);
       }),
       (e.prototype.destroy = function () {
-        var t, e, i, n
-        for (t in this._handlers) this.$element.off(t, this._handlers[t])
-        for (e in this._controls) this._controls[e].remove()
-        for (n in this.overides) this._core[n] = this._overrides[n]
+        var t, e, i, n;
+        for (t in this._handlers) this.$element.off(t, this._handlers[t]);
+        for (e in this._controls) this._controls[e].remove();
+        for (n in this.overides) this._core[n] = this._overrides[n];
         for (i in Object.getOwnPropertyNames(this))
-          'function' != typeof this[i] && (this[i] = null)
+          'function' != typeof this[i] && (this[i] = null);
       }),
       (e.prototype.update = function () {
         var t,
@@ -1945,7 +1948,7 @@ var objectFitImages = (function () {
           n = i + this._core.items().length,
           s = this._core.maximum(!0),
           o = this._core.settings,
-          r = o.center || o.autoWidth || o.dotsData ? 1 : o.dotsEach || o.items
+          r = o.center || o.autoWidth || o.dotsData ? 1 : o.dotsEach || o.items;
         if (
           ('page' !== o.slideBy && (o.slideBy = Math.min(o.slideBy, o.items)),
           o.dots || 'page' == o.slideBy)
@@ -1959,17 +1962,17 @@ var objectFitImages = (function () {
                 }),
                 Math.min(s, t - i) === s)
               )
-                break
-              ;(e = 0), 0
+                break;
+              (e = 0), 0;
             }
-            e += this._core.mergers(this._core.relative(t))
+            e += this._core.mergers(this._core.relative(t));
           }
       }),
       (e.prototype.draw = function () {
         var t = this._core.settings,
           e = this._core.items().length <= t.items,
           i = this._core.relative(this._core.current()),
-          n = t.loop || t.rewind
+          n = t.loop || t.rewind;
         this._controls.$relative.toggleClass('disabled', !t.nav || e),
           t.nav &&
             (this._controls.$previous.toggleClass(
@@ -1995,33 +1998,33 @@ var objectFitImages = (function () {
             this._controls.$absolute
               .children()
               .eq(s.inArray(this.current(), this._pages))
-              .addClass('active'))
+              .addClass('active'));
       }),
       (e.prototype.onTrigger = function (t) {
-        var e = this._core.settings
+        var e = this._core.settings;
         t.page = {
           index: s.inArray(this.current(), this._pages),
           count: this._pages.length,
           size:
             e &&
             (e.center || e.autoWidth || e.dotsData ? 1 : e.dotsEach || e.items),
-        }
+        };
       }),
       (e.prototype.current = function () {
-        var i = this._core.relative(this._core.current())
+        var i = this._core.relative(this._core.current());
         return s
           .grep(
             this._pages,
             s.proxy(function (t, e) {
-              return t.start <= i && t.end >= i
+              return t.start <= i && t.end >= i;
             }, this)
           )
-          .pop()
+          .pop();
       }),
       (e.prototype.getPosition = function (t) {
         var e,
           i,
-          n = this._core.settings
+          n = this._core.settings;
         return (
           'page' == n.slideBy
             ? ((e = s.inArray(this.current(), this._pages)),
@@ -2032,13 +2035,13 @@ var objectFitImages = (function () {
               (i = this._core.items().length),
               t ? (e += n.slideBy) : (e -= n.slideBy)),
           e
-        )
+        );
       }),
       (e.prototype.next = function (t) {
-        s.proxy(this._overrides.to, this._core)(this.getPosition(!0), t)
+        s.proxy(this._overrides.to, this._core)(this.getPosition(!0), t);
       }),
       (e.prototype.prev = function (t) {
-        s.proxy(this._overrides.to, this._core)(this.getPosition(!1), t)
+        s.proxy(this._overrides.to, this._core)(this.getPosition(!1), t);
       }),
       (e.prototype.to = function (t, e, i) {
         !i && this._pages.length
@@ -2047,33 +2050,33 @@ var objectFitImages = (function () {
               this._pages[((t % i) + i) % i].start,
               e
             ))
-          : s.proxy(this._overrides.to, this._core)(t, e)
+          : s.proxy(this._overrides.to, this._core)(t, e);
       }),
-      (s.fn.owlCarousel.Constructor.Plugins.Navigation = e)
+      (s.fn.owlCarousel.Constructor.Plugins.Navigation = e);
   })(window.Zepto || window.jQuery, (window, document)),
   (function (n, s) {
-    'use strict'
+    'use strict';
     function e(t) {
-      ;(this._core = t),
+      (this._core = t),
         (this._hashes = {}),
         (this.$element = this._core.$element),
         (this._handlers = {
           'initialized.owl.carousel': n.proxy(function (t) {
             t.namespace &&
               'URLHash' === this._core.settings.startPosition &&
-              n(s).trigger('hashchange.owl.navigation')
+              n(s).trigger('hashchange.owl.navigation');
           }, this),
           'prepared.owl.carousel': n.proxy(function (t) {
-            var e
+            var e;
             !t.namespace ||
               ((e = n(t.content)
                 .find('[data-hash]')
                 .addBack('[data-hash]')
                 .attr('data-hash')) &&
-                (this._hashes[e] = t.content))
+                (this._hashes[e] = t.content));
           }, this),
           'changed.owl.carousel': n.proxy(function (t) {
-            var i
+            var i;
             t.namespace &&
               'position' === t.property.name &&
               ((i = this._core.items(
@@ -2081,11 +2084,11 @@ var objectFitImages = (function () {
               )),
               (t = n
                 .map(this._hashes, function (t, e) {
-                  return t === i ? e : null
+                  return t === i ? e : null;
                 })
                 .join()) &&
                 s.location.hash.slice(1) !== t &&
-                (s.location.hash = t))
+                (s.location.hash = t));
           }, this),
         }),
         (this._core.options = n.extend({}, e.Defaults, this._core.options)),
@@ -2095,22 +2098,22 @@ var objectFitImages = (function () {
           n.proxy(function (t) {
             var e = s.location.hash.substring(1),
               i = this._core.$stage.children(),
-              e = this._hashes[e] && i.index(this._hashes[e])
+              e = this._hashes[e] && i.index(this._hashes[e]);
             void 0 !== e &&
               e !== this._core.current() &&
-              this._core.to(this._core.relative(e), !1, !0)
+              this._core.to(this._core.relative(e), !1, !0);
           }, this)
-        )
+        );
     }
-    ;(e.Defaults = { URLhashListener: !1 }),
+    (e.Defaults = { URLhashListener: !1 }),
       (e.prototype.destroy = function () {
-        var t, e
+        var t, e;
         for (t in (n(s).off('hashchange.owl.navigation'), this._handlers))
-          this._core.$element.off(t, this._handlers[t])
+          this._core.$element.off(t, this._handlers[t]);
         for (e in Object.getOwnPropertyNames(this))
-          'function' != typeof this[e] && (this[e] = null)
+          'function' != typeof this[e] && (this[e] = null);
       }),
-      (n.fn.owlCarousel.Constructor.Plugins.Hash = e)
+      (n.fn.owlCarousel.Constructor.Plugins.Hash = e);
   })(window.Zepto || window.jQuery, window, document),
   (function (s) {
     var o = s('<support>').get(0).style,
@@ -2134,29 +2137,29 @@ var objectFitImages = (function () {
         },
       },
       e = function () {
-        return !!a('transform')
+        return !!a('transform');
       },
       i = function () {
-        return !!a('perspective')
+        return !!a('perspective');
       },
       n = function () {
-        return !!a('animation')
-      }
+        return !!a('animation');
+      };
     function a(t, i) {
       var n = !1,
-        e = t.charAt(0).toUpperCase() + t.slice(1)
+        e = t.charAt(0).toUpperCase() + t.slice(1);
       return (
         s.each((t + ' ' + r.join(e + ' ') + e).split(' '), function (t, e) {
-          if (void 0 !== o[e]) return (n = !i || e), !1
+          if (void 0 !== o[e]) return (n = !i || e), !1;
         }),
         n
-      )
+      );
     }
     function l(t) {
-      return a(t, !0)
+      return a(t, !0);
     }
     !(function () {
-      return !!a('transition')
+      return !!a('transition');
     })() ||
       ((s.support.transition = new String(l('transition'))),
       (s.support.transition.end = t.transition.end[s.support.transition])),
@@ -2165,20 +2168,20 @@ var objectFitImages = (function () {
         (s.support.animation.end = t.animation.end[s.support.animation])),
       e() &&
         ((s.support.transform = new String(l('transform'))),
-        (s.support.transform3d = i()))
+        (s.support.transform3d = i()));
   })(window.Zepto || window.jQuery, (window, document)),
   (function (t, e) {
     'function' == typeof define && define.amd
       ? define(e)
       : 'object' == typeof exports
       ? (module.exports = e())
-      : (t.PhotoSwipeUI_Default = e())
+      : (t.PhotoSwipeUI_Default = e());
   })(this, function () {
-    'use strict'
+    'use strict';
     return function (n, a) {
       function t(t) {
-        if (k) return !0
-        ;(t = t || window.event), E.timeToIdle && E.mouseUsed && !y && r()
+        if (k) return !0;
+        (t = t || window.event), E.timeToIdle && E.mouseUsed && !y && r();
         for (
           var e,
             i,
@@ -2189,32 +2192,32 @@ var objectFitImages = (function () {
         )
           (e = L[s]).onTap &&
             -1 < n.indexOf('pswp__' + e.name) &&
-            (e.onTap(), (i = !0))
+            (e.onTap(), (i = !0));
         i &&
           (t.stopPropagation && t.stopPropagation(),
           (k = !0),
           (t = a.features.isOldAndroid ? 600 : 30),
           setTimeout(function () {
-            k = !1
-          }, t))
+            k = !1;
+          }, t));
       }
       function i() {
-        var t = 1 === E.getNumItemsFn()
-        t !== T && (F(p, 'ui--one-slide', t), (T = t))
+        var t = 1 === E.getNumItemsFn();
+        t !== T && (F(p, 'ui--one-slide', t), (T = t));
       }
       function e() {
-        F(w, 'share-modal--hidden', B)
+        F(w, 'share-modal--hidden', B);
       }
       function s() {
         return (
           (B = !B)
             ? (a.removeClass(w, 'pswp__share-modal--fade-in'),
               setTimeout(function () {
-                B && e()
+                B && e();
               }, 300))
             : (e(),
               setTimeout(function () {
-                B || a.addClass(w, 'pswp__share-modal--fade-in')
+                B || a.addClass(w, 'pswp__share-modal--fade-in');
               }, 30)),
           B ||
             (function () {
@@ -2223,15 +2226,15 @@ var objectFitImages = (function () {
                 r < E.shareButtons.length;
                 r++
               ) {
-                e = E.shareButtons[r]
-                n = E.getImageURLForShare(e)
-                s = E.getPageURLForShare(e)
-                o = E.getTextForShare(e)
+                e = E.shareButtons[r];
+                n = E.getImageURLForShare(e);
+                s = E.getPageURLForShare(e);
+                o = E.getTextForShare(e);
                 i = e.url
                   .replace('{{url}}', encodeURIComponent(s))
                   .replace('{{image_url}}', encodeURIComponent(n))
                   .replace('{{raw_image_url}}', n)
-                  .replace('{{text}}', encodeURIComponent(o))
+                  .replace('{{text}}', encodeURIComponent(o));
                 t +=
                   '<a href="' +
                   i +
@@ -2242,35 +2245,35 @@ var objectFitImages = (function () {
                   (e.download ? 'download' : '') +
                   '>' +
                   e.label +
-                  '</a>'
-                if (E.parseShareButtonOut) t = E.parseShareButtonOut(e, t)
+                  '</a>';
+                if (E.parseShareButtonOut) t = E.parseShareButtonOut(e, t);
               }
-              ;(w.children[0].innerHTML = t), (w.children[0].onclick = R)
+              (w.children[0].innerHTML = t), (w.children[0].onclick = R);
             })(),
           0
-        )
+        );
       }
       function o(t) {
         for (var e = 0; e < E.closeElClasses.length; e++)
-          if (a.hasClass(t, 'pswp__' + E.closeElClasses[e])) return !0
+          if (a.hasClass(t, 'pswp__' + E.closeElClasses[e])) return !0;
       }
       function r() {
-        clearTimeout(S), (O = 0), y && D.setIdle(!1)
+        clearTimeout(S), (O = 0), y && D.setIdle(!1);
       }
       function l(t) {
-        ;((t = (t = t || window.event).relatedTarget || t.toElement) &&
+        ((t = (t = t || window.event).relatedTarget || t.toElement) &&
           'HTML' !== t.nodeName) ||
           (clearTimeout(S),
           (S = setTimeout(function () {
-            D.setIdle(!0)
-          }, E.timeToIdleOutside)))
+            D.setIdle(!0);
+          }, E.timeToIdleOutside)));
       }
       function c(t) {
-        b !== t && (F(x, 'preloader--active', !t), (b = t))
+        b !== t && (F(x, 'preloader--active', !t), (b = t));
       }
       function u(t) {
         var e,
-          i = t.vGap
+          i = t.vGap;
         !n.likelyTouchDevice || E.mouseUsed || screen.width > E.fitControlsWidth
           ? ((e = E.barsSize),
             E.captionEl && 'auto' === e.bottom
@@ -2285,26 +2288,26 @@ var objectFitImages = (function () {
                   : (i.bottom = e.top))
               : (i.bottom = 'auto' === e.bottom ? 0 : e.bottom),
             (i.top = e.top))
-          : (i.top = i.bottom = 0)
+          : (i.top = i.bottom = 0);
       }
       function h() {
         function t(t) {
           if (t)
             for (var e = t.length, i = 0; i < e; i++) {
-              ;(s = t[i]), (o = s.className)
+              (s = t[i]), (o = s.className);
               for (var n = 0; n < L.length; n++)
                 (r = L[n]),
                   -1 < o.indexOf('pswp__' + r.name) &&
                     (E[r.option]
                       ? (a.removeClass(s, 'pswp__element--disabled'),
                         r.onInit && r.onInit(s))
-                      : a.addClass(s, 'pswp__element--disabled'))
+                      : a.addClass(s, 'pswp__element--disabled'));
             }
         }
-        var s, o, r
-        t(p.children)
-        var e = a.getChildByClass(p, 'pswp__top-bar')
-        e && t(e.children)
+        var s, o, r;
+        t(p.children);
+        var e = a.getChildByClass(p, 'pswp__top-bar');
+        e && t(e.children);
       }
       var d,
         p,
@@ -2337,7 +2340,7 @@ var objectFitImages = (function () {
           addCaptionHTMLFn: function (t, e) {
             return t.title
               ? ((e.children[0].innerHTML = t.title), !0)
-              : ((e.children[0].innerHTML = ''), !1)
+              : ((e.children[0].innerHTML = ''), !1);
           },
           closeEl: !0,
           captionEl: !0,
@@ -2374,22 +2377,22 @@ var objectFitImages = (function () {
             },
           ],
           getImageURLForShare: function () {
-            return n.currItem.src || ''
+            return n.currItem.src || '';
           },
           getPageURLForShare: function () {
-            return window.location.href
+            return window.location.href;
           },
           getTextForShare: function () {
-            return n.currItem.title || ''
+            return n.currItem.title || '';
           },
           indexIndicatorSep: ' / ',
           fitControlsWidth: 1200,
         },
         F = function (t, e, i) {
-          a[(i ? 'add' : 'remove') + 'Class'](t, 'pswp__' + e)
+          a[(i ? 'add' : 'remove') + 'Class'](t, 'pswp__' + e);
         },
         R = function (t) {
-          var e = (t = t || window.event).target || t.srcElement
+          var e = (t = t || window.event).target || t.srcElement;
           return (
             n.shout('shareLinkClick', t, e),
             !!e.href &&
@@ -2402,7 +2405,7 @@ var objectFitImages = (function () {
                 ),
                 B || s(),
                 !1))
-          )
+          );
         },
         O = 0,
         L = [
@@ -2410,27 +2413,27 @@ var objectFitImages = (function () {
             name: 'caption',
             option: 'captionEl',
             onInit: function (t) {
-              m = t
+              m = t;
             },
           },
           {
             name: 'share-modal',
             option: 'shareEl',
             onInit: function (t) {
-              w = t
+              w = t;
             },
             onTap: function () {
-              s()
+              s();
             },
           },
           {
             name: 'button--share',
             option: 'shareEl',
             onInit: function (t) {
-              g = t
+              g = t;
             },
             onTap: function () {
-              s()
+              s();
             },
           },
           {
@@ -2442,7 +2445,7 @@ var objectFitImages = (function () {
             name: 'counter',
             option: 'counterEl',
             onInit: function (t) {
-              f = t
+              f = t;
             },
           },
           { name: 'button--close', option: 'closeEl', onTap: n.close },
@@ -2452,56 +2455,56 @@ var objectFitImages = (function () {
             name: 'button--fs',
             option: 'fullscreenEl',
             onTap: function () {
-              d.isFullscreen() ? d.exit() : d.enter()
+              d.isFullscreen() ? d.exit() : d.enter();
             },
           },
           {
             name: 'preloader',
             option: 'preloaderEl',
             onInit: function (t) {
-              x = t
+              x = t;
             },
           },
-        ]
-      ;(D.init = function () {
-        var e
+        ];
+      (D.init = function () {
+        var e;
         a.extend(n.options, P, !0),
           (E = n.options),
           (p = a.getChildByClass(n.scrollWrap, 'pswp__ui')),
           (_ = n.listen)('onVerticalDrag', function (t) {
             z && t < 0.95
               ? D.hideControls()
-              : !z && 0.95 <= t && D.showControls()
+              : !z && 0.95 <= t && D.showControls();
           }),
           _('onPinchClose', function (t) {
             z && t < 0.9
               ? (D.hideControls(), (e = !0))
-              : e && !z && 0.9 < t && D.showControls()
+              : e && !z && 0.9 < t && D.showControls();
           }),
           _('zoomGestureEnded', function () {
-            ;(e = !1) && !z && D.showControls()
+            (e = !1) && !z && D.showControls();
           }),
           _('beforeChange', D.update),
           _('doubleTap', function (t) {
-            var e = n.currItem.initialZoomLevel
+            var e = n.currItem.initialZoomLevel;
             n.getZoomLevel() !== e
               ? n.zoomTo(e, t, 333)
-              : n.zoomTo(E.getDoubleTapZoom(!1, n.currItem), t, 333)
+              : n.zoomTo(E.getDoubleTapZoom(!1, n.currItem), t, 333);
           }),
           _('preventDragEvent', function (t, e, i) {
-            var n = t.target || t.srcElement
+            var n = t.target || t.srcElement;
             n &&
               n.getAttribute('class') &&
               -1 < t.type.indexOf('mouse') &&
               (0 < n.getAttribute('class').indexOf('__caption') ||
                 /(SMALL|STRONG|EM)/i.test(n.tagName)) &&
-              (i.prevent = !1)
+              (i.prevent = !1);
           }),
           _('bindEvents', function () {
             a.bind(p, 'pswpTap click', t),
               a.bind(n.scrollWrap, 'pswpTap', D.onGlobalTap),
               n.likelyTouchDevice ||
-                a.bind(n.scrollWrap, 'mouseover', D.onMouseOver)
+                a.bind(n.scrollWrap, 'mouseover', D.onMouseOver);
           }),
           _('unbindEvents', function () {
             B || s(),
@@ -2514,7 +2517,7 @@ var objectFitImages = (function () {
               d &&
                 (a.unbind(document, d.eventK, D.updateFullscreen),
                 d.isFullscreen() && ((E.hideAnimationDuration = 0), d.exit()),
-                (d = null))
+                (d = null));
           }),
           _('destroy', function () {
             E.captionEl &&
@@ -2522,14 +2525,14 @@ var objectFitImages = (function () {
               w && (w.children[0].onclick = null),
               a.removeClass(p, 'pswp__ui--over-close'),
               a.addClass(p, 'pswp__ui--hidden'),
-              D.setIdle(!1)
+              D.setIdle(!1);
           }),
           E.showAnimationDuration || a.removeClass(p, 'pswp__ui--hidden'),
           _('initialZoomIn', function () {
-            E.showAnimationDuration && a.removeClass(p, 'pswp__ui--hidden')
+            E.showAnimationDuration && a.removeClass(p, 'pswp__ui--hidden');
           }),
           _('initialZoomOut', function () {
-            a.addClass(p, 'pswp__ui--hidden')
+            a.addClass(p, 'pswp__ui--hidden');
           }),
           _('parseVerticalMargin', u),
           h(),
@@ -2540,8 +2543,8 @@ var objectFitImages = (function () {
               a.bind(document, 'mousemove', r),
                 a.bind(document, 'mouseout', l),
                 (I = setInterval(function () {
-                  2 === ++O && D.setIdle(!0)
-                }, E.timeToIdle / 2))
+                  2 === ++O && D.setIdle(!0);
+                }, E.timeToIdle / 2));
             }),
           E.fullscreenEl &&
             !a.features.isOldAndroid &&
@@ -2559,18 +2562,18 @@ var objectFitImages = (function () {
                     ? (n.allowProgressiveImg() &&
                         (!n.currItem.img || n.currItem.img.naturalWidth)) ||
                       c(!1)
-                    : c(!0)
-                }, E.loadingIndicatorDelay))
+                    : c(!0);
+                }, E.loadingIndicatorDelay));
             }),
             _('imageLoadComplete', function (t, e) {
-              n.currItem === e && c(!0)
-            }))
+              n.currItem === e && c(!0);
+            }));
       }),
         (D.setIdle = function (t) {
-          F(p, 'ui--idle', (y = t))
+          F(p, 'ui--idle', (y = t));
         }),
         (D.update = function () {
-          ;(M =
+          (M =
             !(!z || !n.currItem) &&
             (D.updateIndexIndicator(),
             E.captionEl &&
@@ -2578,25 +2581,28 @@ var objectFitImages = (function () {
               F(m, 'caption--empty', !n.currItem.title)),
             !0)),
             B || s(),
-            i()
+            i();
         }),
         (D.updateFullscreen = function (t) {
           t &&
             setTimeout(function () {
-              n.setScrollOffset(0, a.getScrollY())
+              n.setScrollOffset(0, a.getScrollY());
             }, 50),
             a[(d.isFullscreen() ? 'add' : 'remove') + 'Class'](
               n.template,
               'pswp--fs'
-            )
+            );
         }),
         (D.updateIndexIndicator = function () {
           E.counterEl &&
             (f.innerHTML =
-              n.getCurrentIndex() + 1 + E.indexIndicatorSep + E.getNumItemsFn())
+              n.getCurrentIndex() +
+              1 +
+              E.indexIndicatorSep +
+              E.getNumItemsFn());
         }),
         (D.onGlobalTap = function (t) {
-          var e = (t = t || window.event).target || t.srcElement
+          var e = (t = t || window.event).target || t.srcElement;
           k ||
             (t.detail && 'mouse' === t.detail.pointerType
               ? o(e)
@@ -2610,31 +2616,31 @@ var objectFitImages = (function () {
                   (z ? D.hideControls() : D.showControls()),
                 E.tapToClose &&
                   (a.hasClass(e, 'pswp__img') || o(e)) &&
-                  n.close()))
+                  n.close()));
         }),
         (D.onMouseOver = function (t) {
-          t = (t = t || window.event).target || t.srcElement
-          F(p, 'ui--over-close', o(t))
+          t = (t = t || window.event).target || t.srcElement;
+          F(p, 'ui--over-close', o(t));
         }),
         (D.hideControls = function () {
-          a.addClass(p, 'pswp__ui--hidden'), (z = !1)
+          a.addClass(p, 'pswp__ui--hidden'), (z = !1);
         }),
         (D.showControls = function () {
-          ;(z = !0), M || D.update(), a.removeClass(p, 'pswp__ui--hidden')
+          (z = !0), M || D.update(), a.removeClass(p, 'pswp__ui--hidden');
         }),
         (D.supportsFullscreen = function () {
-          var t = document
+          var t = document;
           return !!(
             t.exitFullscreen ||
             t.mozCancelFullScreen ||
             t.webkitExitFullscreen ||
             t.msExitFullscreen
-          )
+          );
         }),
         (D.getFullscreenAPI = function () {
           var t,
             e = document.documentElement,
-            i = 'fullscreenchange'
+            i = 'fullscreenchange';
           return (
             e.requestFullscreen
               ? (t = {
@@ -2671,103 +2677,104 @@ var objectFitImages = (function () {
                   (E.closeOnScroll = !1),
                   'webkitRequestFullscreen' !== this.enterK)
                 )
-                  return n.template[this.enterK]()
-                n.template[this.enterK](Element.ALLOW_KEYBOARD_INPUT)
+                  return n.template[this.enterK]();
+                n.template[this.enterK](Element.ALLOW_KEYBOARD_INPUT);
               }),
               (t.exit = function () {
-                return (E.closeOnScroll = v), document[this.exitK]()
+                return (E.closeOnScroll = v), document[this.exitK]();
               }),
               (t.isFullscreen = function () {
-                return document[this.elementK]
+                return document[this.elementK];
               })),
             t
-          )
-        })
-    }
+          );
+        });
+    };
   }),
   (function (t, e) {
     'function' == typeof define && define.amd
       ? define(e)
       : 'object' == typeof exports
       ? (module.exports = e())
-      : (t.PhotoSwipe = e())
+      : (t.PhotoSwipe = e());
   })(this, function () {
-    'use strict'
+    'use strict';
     return function (d, i, t, e) {
       var p = {
         features: null,
         bind: function (t, e, i, n) {
-          var s = (n ? 'remove' : 'add') + 'EventListener'
-          e = e.split(' ')
-          for (var o = 0; o < e.length; o++) e[o] && t[s](e[o], i, !1)
+          var s = (n ? 'remove' : 'add') + 'EventListener';
+          e = e.split(' ');
+          for (var o = 0; o < e.length; o++) e[o] && t[s](e[o], i, !1);
         },
         isArray: function (t) {
-          return t instanceof Array
+          return t instanceof Array;
         },
         createEl: function (t, e) {
-          e = document.createElement(e || 'div')
-          return t && (e.className = t), e
+          e = document.createElement(e || 'div');
+          return t && (e.className = t), e;
         },
         getScrollY: function () {
-          var t = window.pageYOffset
-          return void 0 !== t ? t : document.documentElement.scrollTop
+          var t = window.pageYOffset;
+          return void 0 !== t ? t : document.documentElement.scrollTop;
         },
         unbind: function (t, e, i) {
-          p.bind(t, e, i, !0)
+          p.bind(t, e, i, !0);
         },
         removeClass: function (t, e) {
-          e = new RegExp('(\\s|^)' + e + '(\\s|$)')
+          e = new RegExp('(\\s|^)' + e + '(\\s|$)');
           t.className = t.className
             .replace(e, ' ')
             .replace(/^\s\s*/, '')
-            .replace(/\s\s*$/, '')
+            .replace(/\s\s*$/, '');
         },
         addClass: function (t, e) {
-          p.hasClass(t, e) || (t.className += (t.className ? ' ' : '') + e)
+          p.hasClass(t, e) || (t.className += (t.className ? ' ' : '') + e);
         },
         hasClass: function (t, e) {
           return (
             t.className &&
             new RegExp('(^|\\s)' + e + '(\\s|$)').test(t.className)
-          )
+          );
         },
         getChildByClass: function (t, e) {
           for (var i = t.firstChild; i; ) {
-            if (p.hasClass(i, e)) return i
-            i = i.nextSibling
+            if (p.hasClass(i, e)) return i;
+            i = i.nextSibling;
           }
         },
         arraySearch: function (t, e, i) {
-          for (var n = t.length; n--; ) if (t[n][i] === e) return n
-          return -1
+          for (var n = t.length; n--; ) if (t[n][i] === e) return n;
+          return -1;
         },
         extend: function (t, e, i) {
           for (var n in e)
-            e.hasOwnProperty(n) && ((i && t.hasOwnProperty(n)) || (t[n] = e[n]))
+            e.hasOwnProperty(n) &&
+              ((i && t.hasOwnProperty(n)) || (t[n] = e[n]));
         },
         easing: {
           sine: {
             out: function (t) {
-              return Math.sin(t * (Math.PI / 2))
+              return Math.sin(t * (Math.PI / 2));
             },
             inOut: function (t) {
-              return -(Math.cos(Math.PI * t) - 1) / 2
+              return -(Math.cos(Math.PI * t) - 1) / 2;
             },
           },
           cubic: {
             out: function (t) {
-              return --t * t * t + 1
+              return --t * t * t + 1;
             },
           },
         },
         detectFeatures: function () {
-          if (p.features) return p.features
+          if (p.features) return p.features;
           var t,
             e,
             i = p.createEl().style,
             n = '',
-            s = {}
-          ;(s.oldIE = document.all && !document.addEventListener),
+            s = {};
+          (s.oldIE = document.all && !document.addEventListener),
             (s.touch = 'ontouchstart' in window),
             window.requestAnimationFrame &&
               ((s.raf = window.requestAnimationFrame),
@@ -2785,7 +2792,7 @@ var objectFitImages = (function () {
               (e = (e = t.match(/Android\s([0-9\.]*)/)) ? e[1] : 0),
               1 <= (e = parseFloat(e)) &&
                 (e < 4.4 && (s.isOldAndroid = !0), (s.androidVersion = e)),
-              (s.isMobileOpera = /opera mini|opera mobi/i.test(t)))
+              (s.isMobileOpera = /opera mini|opera mobi/i.test(t)));
           for (
             var o,
               r,
@@ -2799,7 +2806,7 @@ var objectFitImages = (function () {
             for (var n = c[u], h = 0; h < 3; h++)
               (o = l[h]),
                 (r = n + (n ? o.charAt(0).toUpperCase() + o.slice(1) : o)),
-                !s[o] && r in i && (s[o] = r)
+                !s[o] && r in i && (s[o] = r);
             n &&
               !s.raf &&
               ((n = n.toLowerCase()),
@@ -2807,7 +2814,7 @@ var objectFitImages = (function () {
               s.raf &&
                 (s.caf =
                   window[n + 'CancelAnimationFrame'] ||
-                  window[n + 'CancelRequestAnimationFrame']))
+                  window[n + 'CancelRequestAnimationFrame']));
           }
           return (
             s.raf ||
@@ -2816,30 +2823,30 @@ var objectFitImages = (function () {
                 var e = new Date().getTime(),
                   i = Math.max(0, 16 - (e - a)),
                   n = window.setTimeout(function () {
-                    t(e + i)
-                  }, i)
-                return (a = e + i), n
+                    t(e + i);
+                  }, i);
+                return (a = e + i), n;
               }),
               (s.caf = function (t) {
-                clearTimeout(t)
+                clearTimeout(t);
               })),
             (s.svg =
               !!document.createElementNS &&
               !!document.createElementNS('http://www.w3.org/2000/svg', 'svg')
                 .createSVGRect),
             (p.features = s)
-          )
+          );
         },
-      }
+      };
       p.detectFeatures(),
         p.features.oldIE &&
           (p.bind = function (t, e, i, n) {
-            e = e.split(' ')
+            e = e.split(' ');
             for (
               var s,
                 o = (n ? 'detach' : 'attach') + 'Event',
                 r = function () {
-                  i.handleEvent.call(i)
+                  i.handleEvent.call(i);
                 },
                 a = 0;
               a < e.length;
@@ -2848,11 +2855,11 @@ var objectFitImages = (function () {
               if ((s = e[a]))
                 if ('object' == typeof i && i.handleEvent) {
                   if (n) {
-                    if (!i['oldIE' + s]) return !1
-                  } else i['oldIE' + s] = r
-                  t[o]('on' + s, i['oldIE' + s])
-                } else t[o]('on' + s, i)
-          })
+                    if (!i['oldIE' + s]) return !1;
+                  } else i['oldIE' + s] = r;
+                  t[o]('on' + s, i['oldIE' + s]);
+                } else t[o]('on' + s, i);
+          });
       var m = this,
         o = 25,
         A = {
@@ -2874,28 +2881,28 @@ var objectFitImages = (function () {
           mainScrollEndFriction: 0.35,
           panEndFriction: 0.35,
           isClickableElement: function (t) {
-            return 'A' === t.tagName
+            return 'A' === t.tagName;
           },
           getDoubleTapZoom: function (t, e) {
-            return t || e.initialZoomLevel < 0.7 ? 1 : 1.33
+            return t || e.initialZoomLevel < 0.7 ? 1 : 1.33;
           },
           maxSpreadZoom: 1.33,
           modal: !0,
           scaleMode: 'fit',
-        }
-      p.extend(A, e)
+        };
+      p.extend(A, e);
       function n() {
-        return { x: 0, y: 0 }
+        return { x: 0, y: 0 };
       }
       function s(t, e) {
-        p.extend(m, e.publicMethods), Dt.push(t)
+        p.extend(m, e.publicMethods), Dt.push(t);
       }
       function r(t) {
-        var e = Xe()
-        return e - 1 < t ? t - e : t < 0 ? e + t : t
+        var e = Xe();
+        return e - 1 < t ? t - e : t < 0 ? e + t : t;
       }
       function a(t, e) {
-        return Bt[t] || (Bt[t] = []), Bt[t].push(e)
+        return Bt[t] || (Bt[t] = []), Bt[t].push(e);
       }
       function l(t, e, i, n) {
         return n === m.currItem.initialZoomLevel
@@ -2903,10 +2910,10 @@ var objectFitImages = (function () {
           : ((i[t] = Ht(t, n)),
             i[t] > e.min[t]
               ? ((i[t] = e.min[t]), !0)
-              : i[t] < e.max[t] && ((i[t] = e.max[t]), !0))
+              : i[t] < e.max[t] && ((i[t] = e.max[t]), !0));
       }
       function c(t) {
-        var e = ''
+        var e = '';
         A.escKey && 27 === t.keyCode
           ? (e = 'close')
           : A.arrowKeys &&
@@ -2919,17 +2926,19 @@ var objectFitImages = (function () {
               t.shiftKey ||
               t.metaKey ||
               (t.preventDefault ? t.preventDefault() : (t.returnValue = !1),
-              m[e]()))
+              m[e]()));
       }
       function u(t) {
-        t && (rt || ot || mt || et) && (t.preventDefault(), t.stopPropagation())
+        t &&
+          (rt || ot || mt || et) &&
+          (t.preventDefault(), t.stopPropagation());
       }
       function h() {
-        m.setScrollOffset(0, p.getScrollY())
+        m.setScrollOffset(0, p.getScrollY());
       }
       function f(t) {
-        var e
-        ;('mousedown' === t.type && 0 < t.button) ||
+        var e;
+        ('mousedown' === t.type && 0 < t.button) ||
           (Ve
             ? t.preventDefault()
             : (it && 'mousedown' === t.type) ||
@@ -2971,10 +2980,10 @@ var objectFitImages = (function () {
                 Ie(se, oe, we),
                 (ge.x = Math.abs(we.x) - bt.x),
                 (ge.y = Math.abs(we.y) - bt.y),
-                (ht = ye(se, oe)))))
+                (ht = ye(se, oe)))));
       }
       function g(t) {
-        var e, i
+        var e, i;
         t.preventDefault(),
           !W ||
             (-1 < (e = p.arraySearch(ce, t.pointerId, 'id')) &&
@@ -2986,16 +2995,16 @@ var objectFitImages = (function () {
               : fe.x !== kt.x * Tt
               ? (At = 'h')
               : ((t = Math.abs(i[0].x - ae.x) - Math.abs(i[0].y - ae.y)),
-                Math.abs(t) >= ne && ((At = 0 < t ? 'h' : 'v'), (ct = i))))
+                Math.abs(t) >= ne && ((At = 0 < t ? 'h' : 'v'), (ct = i))));
       }
       function w(t) {
         if (Y.isOldAndroid) {
-          if (it && 'mouseup' === t.type) return
-          ;-1 < t.type.indexOf('touch') &&
+          if (it && 'mouseup' === t.type) return;
+          -1 < t.type.indexOf('touch') &&
             (clearTimeout(it),
             (it = setTimeout(function () {
-              it = 0
-            }, 600)))
+              it = 0;
+            }, 600)));
         }
         Pt('pointerUp'),
           Ee(t, !1) && t.preventDefault(),
@@ -3007,10 +3016,10 @@ var objectFitImages = (function () {
                 : ((o.type = { 4: 'mouse', 2: 'touch', 3: 'pen' }[
                     t.pointerType
                   ]),
-                  o.type || (o.type = t.pointerType || 'mouse'))))
+                  o.type || (o.type = t.pointerType || 'mouse'))));
         var e = Pe(t),
-          i = e.length
-        if (2 === (i = 'mouseup' === t.type ? 0 : i)) return !(ct = null)
+          i = e.length;
+        if (2 === (i = 'mouseup' === t.type ? 0 : i)) return !(ct = null);
         1 === i && jt(le, e[0]),
           0 !== i ||
             At ||
@@ -3025,10 +3034,10 @@ var objectFitImages = (function () {
                     y: t.changedTouches[0].pageY,
                     type: 'touch',
                   })),
-            Pt('touchRelease', t, o))
+            Pt('touchRelease', t, o));
         var n,
           s,
-          o = -1
+          o = -1;
         if (
           (0 === i &&
             ((nt = !1),
@@ -3051,18 +3060,18 @@ var objectFitImages = (function () {
               : ((n = bt.y),
                 (s = wt),
                 ee('verticalDrag', 0, 1, 300, p.easing.cubic.out, function (t) {
-                  ;(bt.y = (m.currItem.initialPosition.y - n) * t + n),
+                  (bt.y = (m.currItem.initialPosition.y - n) * t + n),
                     Rt((1 - s) * t + s),
-                    Lt()
+                    Lt();
                 }),
-                Pt('onVerticalDrag', 1))
+                Pt('onVerticalDrag', 1));
           else {
             if ((lt || mt) && 0 === i) {
-              if (Ze(o, J)) return
-              o = 'zoomPointerUp'
+              if (Ze(o, J)) return;
+              o = 'zoomPointerUp';
             }
             mt ||
-              ('swipe' === o ? !lt && I > m.currItem.fitRatio && Le(J) : We())
+              ('swipe' === o ? !lt && I > m.currItem.fitRatio && Le(J) : We());
           }
       }
       var v,
@@ -3135,23 +3144,22 @@ var objectFitImages = (function () {
         zt = !1,
         Bt = {},
         Pt = function (t) {
-          var e = Bt[t]
+          var e = Bt[t];
           if (e) {
-            var i = Array.prototype.slice.call(arguments)
-            i.shift()
-            for (var n = 0; n < e.length; n++) e[n].apply(m, i)
+            var i = Array.prototype.slice.call(arguments);
+            i.shift();
+            for (var n = 0; n < e.length; n++) e[n].apply(m, i);
           }
         },
         Ft = function () {
-          return new Date().getTime()
+          return new Date().getTime();
         },
         Rt = function (t) {
-          ;(wt = t), (m.bg.style.opacity = t * A.bgOpacity)
+          (wt = t), (m.bg.style.opacity = t * A.bgOpacity);
         },
         Ot = function (t, e, i, n, s) {
-          ;(!zt || (s && s !== m.currItem)) &&
-            (n /= (s || m.currItem).fitRatio),
-            (t[$] = D + e + 'px, ' + i + 'px' + M + ' scale(' + n + ')')
+          (!zt || (s && s !== m.currItem)) && (n /= (s || m.currItem).fitRatio),
+            (t[$] = D + e + 'px, ' + i + 'px' + M + ' scale(' + n + ')');
         },
         Lt = function (t) {
           pt &&
@@ -3159,7 +3167,7 @@ var objectFitImages = (function () {
               (I > m.currItem.fitRatio
                 ? zt || (oi(m.currItem, !1, !0), (zt = !0))
                 : zt && (oi(m.currItem), (zt = !1))),
-            Ot(pt, bt.x, bt.y, I))
+            Ot(pt, bt.x, bt.y, I));
         },
         Zt = function (t) {
           t.container &&
@@ -3169,13 +3177,13 @@ var objectFitImages = (function () {
               t.initialPosition.y,
               t.initialZoomLevel,
               t
-            )
+            );
         },
         $t = function (t, e) {
-          e[$] = D + t + 'px, 0px' + M
+          e[$] = D + t + 'px, 0px' + M;
         },
         Wt = function (t, e) {
-          var i
+          var i;
           !A.loop &&
             e &&
             ((i = x + (kt.x * Tt - t) / kt.x),
@@ -3183,17 +3191,17 @@ var objectFitImages = (function () {
             ((i < 0 && 0 < e) || (i >= Xe() - 1 && e < 0)) &&
               (t = fe.x + e * A.mainScrollEndFriction)),
             (fe.x = t),
-            $t(t, b)
+            $t(t, b);
         },
         Ht = function (t, e) {
-          var i = ge[t] - Et[t]
-          return xt[t] + _t[t] + i - (e / S) * i
+          var i = ge[t] - Et[t];
+          return xt[t] + _t[t] + i - (e / S) * i;
         },
         jt = function (t, e) {
-          ;(t.x = e.x), (t.y = e.y), e.id && (t.id = e.id)
+          (t.x = e.x), (t.y = e.y), e.id && (t.id = e.id);
         },
         Nt = function (t) {
-          ;(t.x = Math.round(t.x)), (t.y = Math.round(t.y))
+          (t.x = Math.round(t.x)), (t.y = Math.round(t.y));
         },
         Ut = null,
         Qt = function () {
@@ -3203,41 +3211,41 @@ var objectFitImages = (function () {
             (A.mouseUsed = !0),
             Pt('mouseUsed')),
             (Ut = setTimeout(function () {
-              Ut = null
-            }, 100))
+              Ut = null;
+            }, 100));
         },
         Gt = function (t, e) {
-          t = ni(m.currItem, Ct, t)
-          return e && (dt = t), t
+          t = ni(m.currItem, Ct, t);
+          return e && (dt = t), t;
         },
         Vt = function (t) {
-          return (t = t || m.currItem).initialZoomLevel
+          return (t = t || m.currItem).initialZoomLevel;
         },
         Yt = function (t) {
-          return 0 < (t = t || m.currItem).w ? A.maxSpreadZoom : 1
+          return 0 < (t = t || m.currItem).w ? A.maxSpreadZoom : 1;
         },
         Xt = {},
         qt = 0,
         Kt = function (t) {
-          Xt[t] && (Xt[t].raf && N(Xt[t].raf), qt--, delete Xt[t])
+          Xt[t] && (Xt[t].raf && N(Xt[t].raf), qt--, delete Xt[t]);
         },
         Jt = function (t) {
-          Xt[t] && Kt(t), Xt[t] || (qt++, (Xt[t] = {}))
+          Xt[t] && Kt(t), Xt[t] || (qt++, (Xt[t] = {}));
         },
         te = function () {
-          for (var t in Xt) Xt.hasOwnProperty(t) && Kt(t)
+          for (var t in Xt) Xt.hasOwnProperty(t) && Kt(t);
         },
         ee = function (t, e, i, n, s, o, r) {
           var a,
-            l = Ft()
-          Jt(t)
+            l = Ft();
+          Jt(t);
           function c() {
             if (Xt[t]) {
-              if (((a = Ft() - l), n <= a)) return Kt(t), o(i), void (r && r())
-              o((i - e) * s(a / n) + e), (Xt[t].raf = j(c))
+              if (((a = Ft() - l), n <= a)) return Kt(t), o(i), void (r && r());
+              o((i - e) * s(a / n) + e), (Xt[t].raf = j(c));
             }
           }
-          c()
+          c();
         },
         e = {
           shout: Pt,
@@ -3245,30 +3253,30 @@ var objectFitImages = (function () {
           viewportSize: Ct,
           options: A,
           isMainScrollAnimating: function () {
-            return mt
+            return mt;
           },
           getZoomLevel: function () {
-            return I
+            return I;
           },
           getCurrentIndex: function () {
-            return x
+            return x;
           },
           isDragging: function () {
-            return nt
+            return nt;
           },
           isZooming: function () {
-            return ut
+            return ut;
           },
           setScrollOffset: function (t, e) {
-            ;(Et.x = t), (V = Et.y = e), Pt('updateScrollOffset', Et)
+            (Et.x = t), (V = Et.y = e), Pt('updateScrollOffset', Et);
           },
           applyZoomPan: function (t, e, i, n) {
-            ;(bt.x = e), (bt.y = i), (I = t), Lt(n)
+            (bt.x = e), (bt.y = i), (I = t), Lt(n);
           },
           init: function () {
             if (!v && !y) {
-              var t
-              ;(m.framework = p),
+              var t;
+              (m.framework = p),
                 (m.template = d),
                 (m.bg = p.getChildByClass(d, 'pswp__bg')),
                 (U = d.className),
@@ -3293,29 +3301,29 @@ var objectFitImages = (function () {
                 (P[0].el.style.display = P[2].el.style.display = 'none'),
                 (function () {
                   if ($) {
-                    var t = Y.perspective && !H
+                    var t = Y.perspective && !H;
                     return (
                       (D = 'translate' + (t ? '3d(' : '(')),
                       (M = Y.perspective ? ', 0px)' : ')')
-                    )
+                    );
                   }
-                  ;($ = 'left'),
+                  ($ = 'left'),
                     p.addClass(d, 'pswp--ie'),
                     ($t = function (t, e) {
-                      e.left = t + 'px'
+                      e.left = t + 'px';
                     }),
                     (Zt = function (t) {
                       var e = 1 < t.fitRatio ? 1 : t.fitRatio,
                         i = t.container.style,
                         n = e * t.w,
-                        e = e * t.h
-                      ;(i.width = n + 'px'),
+                        e = e * t.h;
+                      (i.width = n + 'px'),
                         (i.height = e + 'px'),
                         (i.left = t.initialPosition.x + 'px'),
-                        (i.top = t.initialPosition.y + 'px')
+                        (i.top = t.initialPosition.y + 'px');
                     }),
                     (Lt = function () {
-                      var t, e, i, n
+                      var t, e, i, n;
                       pt &&
                         ((t = pt),
                         (i =
@@ -3325,22 +3333,22 @@ var objectFitImages = (function () {
                         (t.width = i + 'px'),
                         (t.height = n + 'px'),
                         (t.left = bt.x + 'px'),
-                        (t.top = bt.y + 'px'))
-                    })
+                        (t.top = bt.y + 'px'));
+                    });
                 })(),
                 (k = {
                   resize: m.updateSize,
                   orientationchange: function () {
                     clearTimeout(X),
                       (X = setTimeout(function () {
-                        Ct.x !== m.scrollWrap.clientWidth && m.updateSize()
-                      }, 500))
+                        Ct.x !== m.scrollWrap.clientWidth && m.updateSize();
+                      }, 500));
                   },
                   scroll: h,
                   keydown: c,
                   click: u,
-                })
-              var e = Y.isOldIOSPhone || Y.isOldAndroid || Y.isMobileOpera
+                });
+              var e = Y.isOldIOSPhone || Y.isOldAndroid || Y.isMobileOpera;
               for (
                 (Y.animationName && Y.transform && !e) ||
                   (A.showAnimationDuration = A.hideAnimationDuration = 0),
@@ -3348,7 +3356,7 @@ var objectFitImages = (function () {
                 t < Dt.length;
                 t++
               )
-                m['init' + Dt[t]]()
+                m['init' + Dt[t]]();
               i && (m.ui = new i(m, p)).init(),
                 Pt('firstUpdate'),
                 (x = x || A.index || 0),
@@ -3361,8 +3369,8 @@ var objectFitImages = (function () {
                     ? (d.style.position = 'fixed')
                     : ((d.style.position = 'absolute'),
                       (d.style.top = p.getScrollY() + 'px'))),
-                void 0 === V && (Pt('initialLayout'), (V = Q = p.getScrollY()))
-              e = 'pswp--open '
+                void 0 === V && (Pt('initialLayout'), (V = Q = p.getScrollY()));
+              e = 'pswp--open ';
               for (
                 A.mainClass && (e += A.mainClass + ' '),
                   A.showHideOpacity && (e += 'pswp--animate_opacity '),
@@ -3377,7 +3385,7 @@ var objectFitImages = (function () {
                 t < 3;
                 t++
               )
-                $t((t + C) * kt.x, P[t].el.style)
+                $t((t + C) * kt.x, P[t].el.style);
               G || p.bind(m.scrollWrap, E, m),
                 a('initialZoomInEnd', function () {
                   m.setContent(P[0], x - 1),
@@ -3388,7 +3396,7 @@ var objectFitImages = (function () {
                     Y.transform && p.bind(m.scrollWrap, 'click', m),
                     A.mouseUsed || p.bind(document, 'mousemove', Qt),
                     p.bind(window, 'resize scroll orientationchange', m),
-                    Pt('bindEvents')
+                    Pt('bindEvents');
                 }),
                 m.setContent(P[1], x),
                 m.updateCurrItem(),
@@ -3399,9 +3407,9 @@ var objectFitImages = (function () {
                       nt ||
                       ut ||
                       I !== m.currItem.initialZoomLevel ||
-                      m.updateSize()
+                      m.updateSize();
                   }, 1e3)),
-                p.addClass(d, 'pswp--visible')
+                p.addClass(d, 'pswp--visible');
             }
           },
           close: function () {
@@ -3416,7 +3424,7 @@ var objectFitImages = (function () {
               nt && p.unbind(window, T, m),
               clearTimeout(X),
               Pt('unbindEvents'),
-              qe(m.currItem, null, !0, m.destroy))
+              qe(m.currItem, null, !0, m.destroy));
           },
           destroy: function () {
             Pt('destroy'),
@@ -3428,7 +3436,7 @@ var objectFitImages = (function () {
               p.unbind(window, 'scroll', m),
               _e(),
               te(),
-              (Bt = null)
+              (Bt = null);
           },
           panTo: function (t, e, i) {
             i ||
@@ -3436,30 +3444,30 @@ var objectFitImages = (function () {
               e > dt.min.y ? (e = dt.min.y) : e < dt.max.y && (e = dt.max.y)),
               (bt.x = t),
               (bt.y = e),
-              Lt()
+              Lt();
           },
           handleEvent: function (t) {
-            ;(t = t || window.event), k[t.type] && k[t.type](t)
+            (t = t || window.event), k[t.type] && k[t.type](t);
           },
           goTo: function (t) {
-            var e = (t = r(t)) - x
-            ;(It = e),
+            var e = (t = r(t)) - x;
+            (It = e),
               (x = t),
               (m.currItem = Ye(x)),
               (Tt -= e),
               Wt(kt.x * Tt),
               te(),
               (mt = !1),
-              m.updateCurrItem()
+              m.updateCurrItem();
           },
           next: function () {
-            m.goTo(x + 1)
+            m.goTo(x + 1);
           },
           prev: function () {
-            m.goTo(x - 1)
+            m.goTo(x - 1);
           },
           updateCurrZoomItem: function (t) {
-            var e
+            var e;
             t && Pt('beforeChange', 0),
               (pt = P[1].el.children.length
                 ? ((e = P[1].el.children[0]),
@@ -3469,22 +3477,22 @@ var objectFitImages = (function () {
               (S = I = m.currItem.initialZoomLevel),
               (bt.x = dt.center.x),
               (bt.y = dt.center.y),
-              t && Pt('afterChange')
+              t && Pt('afterChange');
           },
           invalidateCurrItems: function () {
-            B = !0
+            B = !0;
             for (var t = 0; t < 3; t++)
-              P[t].item && (P[t].item.needsUpdate = !0)
+              P[t].item && (P[t].item.needsUpdate = !0);
           },
           updateCurrItem: function (t) {
             if (0 !== It) {
               var e,
-                i = Math.abs(It)
+                i = Math.abs(It);
               if (!(t && i < 2)) {
-                ;(m.currItem = Ye(x)),
+                (m.currItem = Ye(x)),
                   (zt = !1),
                   Pt('beforeChange', It),
-                  3 <= i && ((C += It + (0 < It ? -3 : 3)), (i = 3))
+                  3 <= i && ((C += It + (0 < It ? -3 : 3)), (i = 3));
                 for (var n = 0; n < i; n++)
                   0 < It
                     ? ((e = P.shift()),
@@ -3494,7 +3502,7 @@ var objectFitImages = (function () {
                     : ((e = P.pop()),
                       P.unshift(e),
                       $t(--C * kt.x, e.el.style),
-                      m.setContent(e, x + i - n - 1 - 1))
+                      m.setContent(e, x + i - n - 1 - 1));
                 !pt ||
                   1 !== Math.abs(It) ||
                   ((t = Ye(F)).initialZoomLevel !== I &&
@@ -3502,21 +3510,21 @@ var objectFitImages = (function () {
                   (It = 0),
                   m.updateCurrZoomItem(),
                   (F = x),
-                  Pt('afterChange')
+                  Pt('afterChange');
               }
             }
           },
           updateSize: function (t) {
             if (!St && A.modal) {
-              var e = p.getScrollY()
+              var e = p.getScrollY();
               if (
                 (V !== e && ((d.style.top = e + 'px'), (V = e)),
                 !t && Mt.x === window.innerWidth && Mt.y === window.innerHeight)
               )
-                return
-              ;(Mt.x = window.innerWidth),
+                return;
+              (Mt.x = window.innerWidth),
                 (Mt.y = window.innerHeight),
-                (d.style.height = Mt.y + 'px')
+                (d.style.height = Mt.y + 'px');
             }
             if (
               ((Ct.x = m.scrollWrap.clientWidth),
@@ -3539,26 +3547,26 @@ var objectFitImages = (function () {
                       1 === o && ((m.currItem = n), m.updateCurrZoomItem(!0)),
                       (n.needsUpdate = !1))
                     : -1 === i.index && 0 <= s && m.setContent(i, s),
-                  n && n.container && (ni(n, Ct), oi(n), Zt(n))
-              B = !1
+                  n && n.container && (ni(n, Ct), oi(n), Zt(n));
+              B = !1;
             }
-            ;(S = I = m.currItem.initialZoomLevel),
+            (S = I = m.currItem.initialZoomLevel),
               (dt = m.currItem.bounds) &&
                 ((bt.x = dt.center.x), (bt.y = dt.center.y), Lt(!0)),
-              Pt('resize')
+              Pt('resize');
           },
           zoomTo: function (e, t, i, n, s) {
             t &&
               ((S = I),
               (ge.x = Math.abs(t.x) - bt.x),
               (ge.y = Math.abs(t.y) - bt.y),
-              jt(xt, bt))
+              jt(xt, bt));
             var t = Gt(e, !1),
-              o = {}
-            l('x', t, o, e), l('y', t, o, e)
+              o = {};
+            l('x', t, o, e), l('y', t, o, e);
             var r = I,
-              a = { x: bt.x, y: bt.y }
-            Nt(o)
+              a = { x: bt.x, y: bt.y };
+            Nt(o);
             t = function (t) {
               1 === t
                 ? ((I = e), (bt.x = o.x), (bt.y = o.y))
@@ -3566,9 +3574,9 @@ var objectFitImages = (function () {
                   (bt.x = (o.x - a.x) * t + a.x),
                   (bt.y = (o.y - a.y) * t + a.y)),
                 s && s(t),
-                Lt(1 === t)
-            }
-            i ? ee('customZoomTo', 0, 1, i, n || p.easing.sine.inOut, t) : t(1)
+                Lt(1 === t);
+            };
+            i ? ee('customZoomTo', 0, 1, i, n || p.easing.sine.inOut, t) : t(1);
           },
         },
         ie = 30,
@@ -3589,23 +3597,23 @@ var objectFitImages = (function () {
         ge = n(),
         we = n(),
         ve = function (t, e) {
-          return t.x === e.x && t.y === e.y
+          return t.x === e.x && t.y === e.y;
         },
         ye = function (t, e) {
           return (
             (de.x = Math.abs(t.x - e.x)),
             (de.y = Math.abs(t.y - e.y)),
             Math.sqrt(de.x * de.x + de.y * de.y)
-          )
+          );
         },
         _e = function () {
-          at && (N(at), (at = null))
+          at && (N(at), (at = null));
         },
         xe = function () {
-          nt && ((at = j(xe)), Re())
+          nt && ((at = j(xe)), Re());
         },
         be = function () {
-          return !('fit' === A.scaleMode && I === m.currItem.initialZoomLevel)
+          return !('fit' === A.scaleMode && I === m.currItem.initialZoomLevel);
         },
         Ce = function (t, e) {
           return (
@@ -3615,7 +3623,7 @@ var objectFitImages = (function () {
               -1 < t.getAttribute('class').indexOf('pswp__scroll-wrap')
             ) &&
             (e(t) ? t : Ce(t.parentNode, e))
-          )
+          );
         },
         Te = {},
         Ee = function (t, e) {
@@ -3623,36 +3631,36 @@ var objectFitImages = (function () {
             (Te.prevent = !Ce(t.target, A.isClickableElement)),
             Pt('preventDragEvent', t, e, Te),
             Te.prevent
-          )
+          );
         },
         ke = function (t, e) {
-          return (e.x = t.pageX), (e.y = t.pageY), (e.id = t.identifier), e
+          return (e.x = t.pageX), (e.y = t.pageY), (e.id = t.identifier), e;
         },
         Ie = function (t, e, i) {
-          ;(i.x = 0.5 * (t.x + e.x)), (i.y = 0.5 * (t.y + e.y))
+          (i.x = 0.5 * (t.x + e.x)), (i.y = 0.5 * (t.y + e.y));
         },
         Se = function (t, e, i) {
-          var n
+          var n;
           50 < t - K &&
             (((n = 2 < he.length ? he.shift() : {}).x = e),
             (n.y = i),
             he.push(n),
-            (K = t))
+            (K = t));
         },
         De = function () {
-          var t = bt.y - m.currItem.initialPosition.y
-          return 1 - Math.abs(t / (Ct.y / 2))
+          var t = bt.y - m.currItem.initialPosition.y;
+          return 1 - Math.abs(t / (Ct.y / 2));
         },
         Me = {},
         ze = {},
         Be = [],
         Pe = function (t) {
-          for (; 0 < Be.length; ) Be.pop()
+          for (; 0 < Be.length; ) Be.pop();
           return (
             W
               ? ((yt = 0),
                 ce.forEach(function (t) {
-                  0 === yt ? (Be[0] = t) : 1 === yt && (Be[1] = t), yt++
+                  0 === yt ? (Be[0] = t) : 1 === yt && (Be[1] = t), yt++;
                 }))
               : -1 < t.type.indexOf('touch')
               ? t.touches &&
@@ -3664,7 +3672,7 @@ var objectFitImages = (function () {
                 (Me.id = ''),
                 (Be[0] = Me)),
             Be
-          )
+          );
         },
         Fe = function (t, e) {
           var i,
@@ -3675,7 +3683,7 @@ var objectFitImages = (function () {
             a = fe.x + e.x,
             l = fe.x - ue.x,
             c = o > dt.min[t] || o < dt.max[t] ? A.panEndFriction : 1,
-            o = bt[t] + e[t] * c
+            o = bt[t] + e[t] * c;
           if (
             (A.allowPanToNext || I === m.currItem.initialZoomLevel) &&
             (pt
@@ -3705,8 +3713,8 @@ var objectFitImages = (function () {
               dt.min.x !== dt.max.x &&
                 (void 0 !== n ? (bt.x = n) : lt || (bt.x += e.x * c)),
               void 0 !== s
-            )
-          mt || lt || (I > m.currItem.fitRatio && (bt[t] += e[t] * c))
+            );
+          mt || lt || (I > m.currItem.fitRatio && (bt[t] += e[t] * c));
         },
         Re = function () {
           if (ct) {
@@ -3714,7 +3722,7 @@ var objectFitImages = (function () {
               e,
               i,
               n,
-              s = ct.length
+              s = ct.length;
             if (0 !== s)
               if (
                 (jt(se, ct[0]),
@@ -3754,7 +3762,7 @@ var objectFitImages = (function () {
                     (bt.y = Ht('y', o)),
                     (tt = I < o),
                     (I = o),
-                    Lt())
+                    Lt());
               else if (
                 At &&
                 (ft &&
@@ -3766,14 +3774,14 @@ var objectFitImages = (function () {
                 0 !== re.x || 0 !== re.y)
               ) {
                 if ('v' === At && A.closeOnVerticalDrag && !be()) {
-                  ;(_t.y += re.y), (bt.y += re.y)
-                  var o = De()
-                  return (et = !0), Pt('onVerticalDrag', o), Rt(o), void Lt()
+                  (_t.y += re.y), (bt.y += re.y);
+                  var o = De();
+                  return (et = !0), Pt('onVerticalDrag', o), Rt(o), void Lt();
                 }
                 Se(Ft(), se.x, se.y),
                   (rt = !0),
                   (dt = m.currItem.bounds),
-                  Fe('x', re) || (Fe('y', re), Nt(bt), Lt())
+                  Fe('x', re) || (Fe('y', re), Nt(bt), Lt());
               }
           }
         },
@@ -3792,7 +3800,7 @@ var objectFitImages = (function () {
               backAnimDestination: {},
               backAnimStarted: {},
               calculateSwipeSpeed: function (t) {
-                ;(i =
+                (i =
                   1 < he.length
                     ? ((e = Ft() - K + 50), he[he.length - 2][t])
                     : ((e = Ft() - q), le[t])),
@@ -3805,7 +3813,7 @@ var objectFitImages = (function () {
                     (n.lastFlickSpeed[t] = 0),
                   (n.slowDownRatio[t] = 0.95),
                   (n.slowDownRatioReverse[t] = 1 - n.slowDownRatio[t]),
-                  (n.speedDecelerationRatio[t] = 1)
+                  (n.speedDecelerationRatio[t] = 1);
               },
               calculateOverBoundsAnimOffset: function (e, t) {
                 n.backAnimStarted[e] ||
@@ -3826,9 +3834,9 @@ var objectFitImages = (function () {
                         t || 300,
                         p.easing.sine.out,
                         function (t) {
-                          ;(bt[e] = t), Lt()
+                          (bt[e] = t), Lt();
                         }
-                      ))))
+                      ))));
               },
               calculateAnimOffset: function (t) {
                 n.backAnimStarted[t] ||
@@ -3844,7 +3852,7 @@ var objectFitImages = (function () {
                     n.lastFlickSpeed[t] *
                     n.speedDecelerationRatio[t] *
                     n.timeDiff),
-                  (bt[t] += n.distanceOffset[t]))
+                  (bt[t] += n.distanceOffset[t]));
               },
               panAnimLoop: function () {
                 Xt.zoomPan &&
@@ -3862,10 +3870,10 @@ var objectFitImages = (function () {
                     ((bt.x = Math.round(bt.x)),
                     (bt.y = Math.round(bt.y)),
                     Lt(),
-                    Kt('zoomPan')))
+                    Kt('zoomPan')));
               },
-            }
-          return n
+            };
+          return n;
         },
         Le = function (t) {
           if (
@@ -3882,11 +3890,11 @@ var objectFitImages = (function () {
               t.calculateOverBoundsAnimOffset('x'),
               t.calculateOverBoundsAnimOffset('y'),
               !0
-            )
-          Jt('zoomPan'), (t.lastNow = Ft()), t.panAnimLoop()
+            );
+          Jt('zoomPan'), (t.lastNow = Ft()), t.panAnimLoop();
         },
         Ze = function (t, e) {
-          var i, n
+          var i, n;
           mt || (pe = x),
             'swipe' === t &&
               ((n = ae.x - le.x),
@@ -3898,7 +3906,7 @@ var objectFitImages = (function () {
               ((x += o) < 0
                 ? ((x = A.loop ? Xe() - 1 : 0), (s = !0))
                 : x >= Xe() && ((x = A.loop ? 0 : Xe() - 1), (s = !0)),
-              (s && !A.loop) || ((It += o), (Tt -= o), (i = !0)))
+              (s && !A.loop) || ((It += o), (Tt -= o), (i = !0)));
           var s = kt.x * Tt,
             o = Math.abs(s - fe.x),
             r =
@@ -3909,7 +3917,7 @@ var objectFitImages = (function () {
                       : 333),
                   (r = Math.min(r, 400)),
                   Math.max(r, 250))
-                : 333
+                : 333;
           return (
             pe === x && (i = !1),
             (mt = !0),
@@ -3919,40 +3927,40 @@ var objectFitImages = (function () {
                 (mt = !1),
                 (pe = -1),
                 (!i && pe === x) || m.updateCurrItem(),
-                Pt('mainScrollAnimComplete')
+                Pt('mainScrollAnimComplete');
             }),
             i && m.updateCurrItem(!0),
             i
-          )
+          );
         },
         $e = function (t) {
-          return (1 / ht) * t * S
+          return (1 / ht) * t * S;
         },
         We = function () {
           var t = I,
             e = Vt(),
-            i = Yt()
-          I < e ? (t = e) : i < I && (t = i)
+            i = Yt();
+          I < e ? (t = e) : i < I && (t = i);
           var n,
-            s = wt
+            s = wt;
           return (
             gt && !tt && !vt && I < e
               ? m.close()
               : (gt &&
                   (n = function (t) {
-                    Rt((1 - s) * t + s)
+                    Rt((1 - s) * t + s);
                   }),
                 m.zoomTo(t, 0, 200, p.easing.cubic.out, n)),
             !0
-          )
-        }
+          );
+        };
       s('Gestures', {
         publicMethods: {
           initGestures: function () {
             function t(t, e, i, n, s) {
-              ;(R = t + e), (O = t + i), (L = t + n), (Z = s ? t + s : '')
+              (R = t + e), (O = t + i), (L = t + n), (Z = s ? t + s : '');
             }
-            ;(W = Y.pointerEvent) && Y.touch && (Y.touch = !1),
+            (W = Y.pointerEvent) && Y.touch && (Y.touch = !1),
               W
                 ? navigator.pointerEnabled
                   ? t('pointer', 'down', 'move', 'up', 'cancel')
@@ -3978,28 +3986,28 @@ var objectFitImages = (function () {
                 (k.mousedown = k[R]),
                 (k.mousemove = k[O]),
                 (k.mouseup = k[L])),
-              H || (A.allowPanToNext = !1)
+              H || (A.allowPanToNext = !1);
           },
         },
-      })
+      });
       function He(t) {
         function e() {
-          ;(t.loading = !1),
+          (t.loading = !1),
             (t.loaded = !0),
             t.loadComplete ? t.loadComplete(t) : (t.img = null),
             (i.onload = i.onerror = null),
-            (i = null)
+            (i = null);
         }
-        ;(t.loading = !0), (t.loaded = !1)
-        var i = (t.img = p.createEl('pswp__img', 'img'))
+        (t.loading = !0), (t.loaded = !1);
+        var i = (t.img = p.createEl('pswp__img', 'img'));
         return (
           (i.onload = e),
           (i.onerror = function () {
-            ;(t.loadError = !0), e()
+            (t.loadError = !0), e();
           }),
           (i.src = t.src),
           i
-        )
+        );
       }
       function je(t, e) {
         return (
@@ -4009,14 +4017,14 @@ var objectFitImages = (function () {
           (e && (t.container.innerHTML = ''),
           (t.container.innerHTML = A.errorMsg.replace('%url%', t.src)),
           1)
-        )
+        );
       }
       function Ne() {
         if (Je.length) {
           for (var t, e = 0; e < Je.length; e++)
             (t = Je[e]).holder.index === t.index &&
-              si(t.index, t.item, t.baseDiv, t.img, !1, t.clearPlaceholder)
-          Je = []
+              si(t.index, t.item, t.baseDiv, t.img, !1, t.clearPlaceholder);
+          Je = [];
         }
       }
       var Ue,
@@ -4026,12 +4034,12 @@ var objectFitImages = (function () {
         Ye,
         Xe,
         qe = function (o, t, r, e) {
-          var a
+          var a;
           Ue && clearTimeout(Ue),
             (Ge = Ve = !0),
             o.initialLayout
               ? ((a = o.initialLayout), (o.initialLayout = null))
-              : (a = A.getThumbBoundsFn && A.getThumbBoundsFn(x))
+              : (a = A.getThumbBoundsFn && A.getThumbBoundsFn(x));
           function l() {
             Kt('initialZoom'),
               r
@@ -4042,9 +4050,9 @@ var objectFitImages = (function () {
                   p.addClass(d, 'pswp--animated-in'),
                   Pt('initialZoom' + (r ? 'OutEnd' : 'InEnd'))),
               e && e(),
-              (Ve = !1)
+              (Ve = !1);
           }
-          var c = r ? A.hideAnimationDuration : A.showAnimationDuration
+          var c = r ? A.hideAnimationDuration : A.showAnimationDuration;
           if (!c || !a || void 0 === a.x)
             return (
               Pt('initialZoom' + (r ? 'Out' : 'In')),
@@ -4055,12 +4063,12 @@ var objectFitImages = (function () {
               Rt(1),
               void (c
                 ? setTimeout(function () {
-                    l()
+                    l();
                   }, c)
                 : l())
-            )
-          var u, h
-          ;(u = _),
+            );
+          var u, h;
+          (u = _),
             (h = !m.currItem.src || m.currItem.loadError || A.showHideOpacity),
             o.miniImg && (o.miniImg.style.webkitBackfaceVisibility = 'hidden'),
             r ||
@@ -4078,11 +4086,11 @@ var objectFitImages = (function () {
                     'pswp--animate_opacity'
                   )
                 : setTimeout(function () {
-                    p.addClass(d, 'pswp--animate_opacity')
+                    p.addClass(d, 'pswp--animate_opacity');
                   }, 30)),
             (Ue = setTimeout(
               function () {
-                var e, i, n, s, t
+                var e, i, n, s, t;
                 Pt('initialZoom' + (r ? 'Out' : 'In')),
                   r
                     ? ((e = a.w / o.w),
@@ -4096,7 +4104,7 @@ var objectFitImages = (function () {
                             (bt.x = (a.x - i.x) * t + i.x),
                             (bt.y = (a.y - V - i.y) * t + i.y)),
                           Lt(),
-                          h ? (d.style.opacity = 1 - t) : Rt(s - t * s)
+                          h ? (d.style.opacity = 1 - t) : Rt(s - t * s);
                       }),
                       u
                         ? ee('initialZoom', 0, 1, c, p.easing.cubic.out, t, l)
@@ -4106,10 +4114,10 @@ var objectFitImages = (function () {
                       Lt(),
                       Rt(1),
                       h ? (d.style.opacity = 1) : Rt(1),
-                      (Ue = setTimeout(l, c + 20)))
+                      (Ue = setTimeout(l, c + 20)));
               },
               r ? 25 : 90
-            ))
+            ));
         },
         Ke = {},
         Je = [],
@@ -4120,7 +4128,7 @@ var objectFitImages = (function () {
           forceProgressiveLoading: !1,
           preload: [1, 1],
           getNumItemsFn: function () {
-            return Qe.length
+            return Qe.length;
           },
         },
         ei = function () {
@@ -4128,17 +4136,17 @@ var objectFitImages = (function () {
             center: { x: 0, y: 0 },
             max: { x: 0, y: 0 },
             min: { x: 0, y: 0 },
-          }
+          };
         },
         ii = function (t, e, i) {
-          var n = t.bounds
-          ;(n.center.x = Math.round((Ke.x - e) / 2)),
+          var n = t.bounds;
+          (n.center.x = Math.round((Ke.x - e) / 2)),
             (n.center.y = Math.round((Ke.y - i) / 2) + t.vGap.top),
             (n.max.x = e > Ke.x ? Math.round(Ke.x - e) : n.center.x),
             (n.max.y =
               i > Ke.y ? Math.round(Ke.y - i) + t.vGap.top : n.center.y),
             (n.min.x = e > Ke.x ? 0 : n.center.x),
-            (n.min.y = i > Ke.y ? t.vGap.top : n.center.y)
+            (n.min.y = i > Ke.y ? t.vGap.top : n.center.y);
         },
         ni = function (t, e, i) {
           if (!t.src || t.loadError)
@@ -4148,9 +4156,9 @@ var objectFitImages = (function () {
               (t.bounds = ei()),
               (t.initialPosition = t.bounds.center),
               t.bounds
-            )
+            );
           var n,
-            s = !i
+            s = !i;
           return (
             s &&
               (t.vGap || (t.vGap = { top: 0, bottom: 0 }),
@@ -4173,7 +4181,7 @@ var objectFitImages = (function () {
                   (t.initialPosition = t.bounds.center),
                 t.bounds)
               : void 0
-          )
+          );
         },
         si = function (t, e, i, n, s, o) {
           e.loadError ||
@@ -4187,11 +4195,11 @@ var objectFitImages = (function () {
                     e.loaded &&
                     e.placeholder &&
                     ((e.placeholder.style.display = 'none'),
-                    (e.placeholder = null))
-                }, 500)))
+                    (e.placeholder = null));
+                }, 500)));
         },
         oi = function (t, e, i) {
-          var n
+          var n;
           t.src &&
             ((e = e || t.container.lastChild),
             (n = i ? t.w : Math.round(t.w * t.fitRatio)),
@@ -4201,16 +4209,16 @@ var objectFitImages = (function () {
               ((t.placeholder.style.width = n + 'px'),
               (t.placeholder.style.height = i + 'px')),
             (e.style.width = n + 'px'),
-            (e.style.height = i + 'px'))
-        }
+            (e.style.height = i + 'px'));
+        };
       s('Controller', {
         publicMethods: {
           lazyLoadItem: function (t) {
-            t = r(t)
-            var e = Ye(t)
+            t = r(t);
+            var e = Ye(t);
             e &&
               ((!e.loaded && !e.loading) || B) &&
-              (Pt('gettingData', t, e), e.src && He(e))
+              (Pt('gettingData', t, e), e.src && He(e));
           },
           initController: function () {
             p.extend(A, ti, !0),
@@ -4229,12 +4237,12 @@ var objectFitImages = (function () {
                   o <= (i ? s : n);
                   o++
                 )
-                  m.lazyLoadItem(x + o)
-                for (o = 1; o <= (i ? n : s); o++) m.lazyLoadItem(x - o)
+                  m.lazyLoadItem(x + o);
+                for (o = 1; o <= (i ? n : s); o++) m.lazyLoadItem(x - o);
               }),
               a('initialLayout', function () {
                 m.currItem.initialLayout =
-                  A.getThumbBoundsFn && A.getThumbBoundsFn(x)
+                  A.getThumbBoundsFn && A.getThumbBoundsFn(x);
               }),
               a('mainScrollAnimComplete', Ne),
               a('initialZoomInEnd', Ne),
@@ -4244,12 +4252,12 @@ var objectFitImages = (function () {
                     t.placeholder && (t.placeholder = null),
                     t.img && (t.img = null),
                     t.preloader && (t.preloader = null),
-                    t.loadError && (t.loaded = t.loadError = !1)
-                Je = null
-              })
+                    t.loadError && (t.loaded = t.loadError = !1);
+                Je = null;
+              });
           },
           getItemAt: function (t) {
-            return 0 <= t && void 0 !== Qe[t] && Qe[t]
+            return 0 <= t && void 0 !== Qe[t] && Qe[t];
           },
           allowProgressiveImg: function () {
             return (
@@ -4257,15 +4265,15 @@ var objectFitImages = (function () {
               !H ||
               A.mouseUsed ||
               1200 < screen.width
-            )
+            );
           },
           setContent: function (e, i) {
-            A.loop && (i = r(i))
-            var t = m.getItemAt(e.index)
-            t && (t.container = null)
+            A.loop && (i = r(i));
+            var t = m.getItemAt(e.index);
+            t && (t.container = null);
             var n,
               s,
-              o = m.getItemAt(i)
+              o = m.getItemAt(i);
             o
               ? (Pt('gettingData', i, o),
                 (e.index = i),
@@ -4293,7 +4301,7 @@ var objectFitImages = (function () {
                               ni(t, Ct),
                               Zt(t),
                               void (e.index === x && m.updateCurrZoomItem())
-                            )
+                            );
                           t.imageAppended
                             ? !Ve &&
                               t.placeholder &&
@@ -4308,11 +4316,11 @@ var objectFitImages = (function () {
                                 holder: e,
                                 clearPlaceholder: !0,
                               })
-                            : si(i, t, s, t.img, mt || Ve, !0)
+                            : si(i, t, s, t.img, mt || Ve, !0);
                         }
-                        ;(t.loadComplete = null),
+                        (t.loadComplete = null),
                           (t.img = null),
-                          Pt('imageLoadComplete', i, t)
+                          Pt('imageLoadComplete', i, t);
                       }
                     }),
                     p.features.transform &&
@@ -4337,14 +4345,14 @@ var objectFitImages = (function () {
                 Ge || i !== x ? Zt(o) : ((pt = s.style), qe(o, n || o.img)),
                 (e.el.innerHTML = ''),
                 e.el.appendChild(s))
-              : (e.el.innerHTML = '')
+              : (e.el.innerHTML = '');
           },
           cleanSlide: function (t) {
             t.img && (t.img.onload = t.img.onerror = null),
-              (t.loaded = t.loading = t.img = t.imageAppended = !1)
+              (t.loaded = t.loading = t.img = t.imageAppended = !1);
           },
         },
-      })
+      });
       function ri(t, e, i) {
         var n = document.createEvent('CustomEvent'),
           i = {
@@ -4352,26 +4360,26 @@ var objectFitImages = (function () {
             target: t.target,
             releasePoint: e,
             pointerType: i || 'touch',
-          }
-        n.initCustomEvent('pswpTap', !0, !0, i), t.target.dispatchEvent(n)
+          };
+        n.initCustomEvent('pswpTap', !0, !0, i), t.target.dispatchEvent(n);
       }
       var ai,
         li,
-        ci = {}
+        ci = {};
       s('Tap', {
         publicMethods: {
           initTap: function () {
             a('firstTouchStart', m.onTapStart),
               a('touchRelease', m.onTapRelease),
               a('destroy', function () {
-                ;(ci = {}), (ai = null)
-              })
+                (ci = {}), (ai = null);
+              });
           },
           onTapStart: function (t) {
-            1 < t.length && (clearTimeout(ai), (ai = null))
+            1 < t.length && (clearTimeout(ai), (ai = null));
           },
           onTapRelease: function (t, e) {
-            var i, n, s
+            var i, n, s;
             e &&
               (rt ||
                 st ||
@@ -4390,9 +4398,9 @@ var objectFitImages = (function () {
                     ? ri(t, e)
                     : (jt(ci, i),
                       (ai = setTimeout(function () {
-                        ri(t, e), (ai = null)
+                        ri(t, e), (ai = null);
                       }, 300)))
-                  : ri(t, e, 'mouse')))
+                  : ri(t, e, 'mouse')));
           },
         },
       }),
@@ -4402,39 +4410,40 @@ var objectFitImages = (function () {
               G ||
                 (H
                   ? a('mouseUsed', function () {
-                      m.setupDesktopZoom()
+                      m.setupDesktopZoom();
                     })
-                  : m.setupDesktopZoom(!0))
+                  : m.setupDesktopZoom(!0));
             },
             setupDesktopZoom: function (t) {
-              li = {}
-              var e = 'wheel mousewheel DOMMouseScroll'
+              li = {};
+              var e = 'wheel mousewheel DOMMouseScroll';
               a('bindEvents', function () {
-                p.bind(d, e, m.handleMouseWheel)
+                p.bind(d, e, m.handleMouseWheel);
               }),
                 a('unbindEvents', function () {
-                  li && p.unbind(d, e, m.handleMouseWheel)
+                  li && p.unbind(d, e, m.handleMouseWheel);
                 }),
-                (m.mouseZoomedIn = !1)
+                (m.mouseZoomedIn = !1);
               function i() {
                 m.mouseZoomedIn &&
                   (p.removeClass(d, 'pswp--zoomed-in'), (m.mouseZoomedIn = !1)),
                   I < 1
                     ? p.addClass(d, 'pswp--zoom-allowed')
                     : p.removeClass(d, 'pswp--zoom-allowed'),
-                  s()
+                  s();
               }
               var n,
                 s = function () {
-                  n && (p.removeClass(d, 'pswp--dragging'), (n = !1))
-                }
+                  n && (p.removeClass(d, 'pswp--dragging'), (n = !1));
+                };
               a('resize', i),
                 a('afterChange', i),
                 a('pointerDown', function () {
-                  m.mouseZoomedIn && ((n = !0), p.addClass(d, 'pswp--dragging'))
+                  m.mouseZoomedIn &&
+                    ((n = !0), p.addClass(d, 'pswp--dragging'));
                 }),
                 a('pointerUp', s),
-                t || i()
+                t || i();
             },
             handleMouseWheel: function (t) {
               if (I <= m.currItem.fitRatio)
@@ -4444,60 +4453,60 @@ var objectFitImages = (function () {
                       ? t.preventDefault()
                       : $ && 2 < Math.abs(t.deltaY) && ((_ = !0), m.close())),
                   !0
-                )
+                );
               if ((t.stopPropagation(), (li.x = 0), 'deltaX' in t))
                 1 === t.deltaMode
                   ? ((li.x = 18 * t.deltaX), (li.y = 18 * t.deltaY))
-                  : ((li.x = t.deltaX), (li.y = t.deltaY))
+                  : ((li.x = t.deltaX), (li.y = t.deltaY));
               else if ('wheelDelta' in t)
                 t.wheelDeltaX && (li.x = -0.16 * t.wheelDeltaX),
                   t.wheelDeltaY
                     ? (li.y = -0.16 * t.wheelDeltaY)
-                    : (li.y = -0.16 * t.wheelDelta)
+                    : (li.y = -0.16 * t.wheelDelta);
               else {
-                if (!('detail' in t)) return
-                li.y = t.detail
+                if (!('detail' in t)) return;
+                li.y = t.detail;
               }
-              Gt(I, !0)
+              Gt(I, !0);
               var e = bt.x - li.x,
-                i = bt.y - li.y
-              ;(A.modal ||
+                i = bt.y - li.y;
+              (A.modal ||
                 (e <= dt.min.x &&
                   e >= dt.max.x &&
                   i <= dt.min.y &&
                   i >= dt.max.y)) &&
                 t.preventDefault(),
-                m.panTo(e, i)
+                m.panTo(e, i);
             },
             toggleDesktopZoom: function (t) {
-              t = t || { x: Ct.x / 2 + Et.x, y: Ct.y / 2 + Et.y }
+              t = t || { x: Ct.x / 2 + Et.x, y: Ct.y / 2 + Et.y };
               var e = A.getDoubleTapZoom(!0, m.currItem),
-                i = I === e
-              ;(m.mouseZoomedIn = !i),
+                i = I === e;
+              (m.mouseZoomedIn = !i),
                 m.zoomTo(i ? m.currItem.initialZoomLevel : e, t, 333),
-                p[(i ? 'remove' : 'add') + 'Class'](d, 'pswp--zoomed-in')
+                p[(i ? 'remove' : 'add') + 'Class'](d, 'pswp--zoomed-in');
             },
           },
-        })
+        });
       function ui() {
-        di && clearTimeout(di), mi && clearTimeout(mi)
+        di && clearTimeout(di), mi && clearTimeout(mi);
       }
       function hi() {
         var t = Ti(),
-          e = {}
-        if (t.length < 5) return e
+          e = {};
+        if (t.length < 5) return e;
         var i,
-          n = t.split('&')
+          n = t.split('&');
         for (o = 0; o < n.length; o++)
-          n[o] && ((i = n[o].split('=')).length < 2 || (e[i[0]] = i[1]))
+          n[o] && ((i = n[o].split('=')).length < 2 || (e[i[0]] = i[1]));
         if (A.galleryPIDs) {
           for (var s = e.pid, o = (e.pid = 0); o < Qe.length; o++)
             if (Qe[o].pid === s) {
-              e.pid = o
-              break
+              e.pid = o;
+              break;
             }
-        } else e.pid = parseInt(e.pid, 10) - 1
-        return e.pid < 0 && (e.pid = 0), e
+        } else e.pid = parseInt(e.pid, 10) - 1;
+        return e.pid < 0 && (e.pid = 0), e;
       }
       var di,
         pi,
@@ -4513,10 +4522,10 @@ var objectFitImages = (function () {
         bi,
         Ci = { history: !0, galleryUID: 1 },
         Ti = function () {
-          return xi.hash.substring(1)
+          return xi.hash.substring(1);
         },
         Ei = function () {
-          var t, e
+          var t, e;
           mi && clearTimeout(mi),
             qt || nt
               ? (mi = setTimeout(Ei, 500))
@@ -4538,13 +4547,13 @@ var objectFitImages = (function () {
                   : (xi.hash = t),
                 (vi = !0),
                 (pi = setTimeout(function () {
-                  Ai = !1
-                }, 60)))
-        }
+                  Ai = !1;
+                }, 60)));
+        };
       s('History', {
         publicMethods: {
           initHistory: function () {
-            var t, e
+            var t, e;
             p.extend(A, Ci, !0),
               A.history &&
                 ((xi = window.location),
@@ -4555,10 +4564,10 @@ var objectFitImages = (function () {
                   (wi = (wi = wi.split('&gid=')[0]).split('?gid=')[0]),
                 a('afterChange', m.updateURL),
                 a('unbindEvents', function () {
-                  p.unbind(window, 'hashchange', m.onHashChange)
+                  p.unbind(window, 'hashchange', m.onHashChange);
                 }),
                 (t = function () {
-                  ;(gi = !0),
+                  (gi = !0),
                     yi ||
                       (_i
                         ? history.back()
@@ -4571,47 +4580,47 @@ var objectFitImages = (function () {
                             xi.pathname + xi.search
                           )
                         : (xi.hash = '')),
-                    ui()
+                    ui();
                 }),
                 a('unbindEvents', function () {
-                  _ && t()
+                  _ && t();
                 }),
                 a('destroy', function () {
-                  gi || t()
+                  gi || t();
                 }),
                 a('firstUpdate', function () {
-                  x = hi().pid
+                  x = hi().pid;
                 }),
                 -1 < (e = wi.indexOf('pid=')) &&
                   '&' === (wi = wi.substring(0, e)).slice(-1) &&
                   (wi = wi.slice(0, -1)),
                 setTimeout(function () {
-                  v && p.bind(window, 'hashchange', m.onHashChange)
-                }, 40))
+                  v && p.bind(window, 'hashchange', m.onHashChange);
+                }, 40));
           },
           onHashChange: function () {
-            if (Ti() === wi) return (yi = !0), void m.close()
-            Ai || ((fi = !0), m.goTo(hi().pid), (fi = !1))
+            if (Ti() === wi) return (yi = !0), void m.close();
+            Ai || ((fi = !0), m.goTo(hi().pid), (fi = !1));
           },
           updateURL: function () {
-            ui(), fi || (vi ? (di = setTimeout(Ei, 800)) : Ei())
+            ui(), fi || (vi ? (di = setTimeout(Ei, 800)) : Ei());
           },
         },
       }),
-        p.extend(m, e)
-    }
+        p.extend(m, e);
+    };
   }),
   (function (t) {
     var e,
       s,
       i,
       n,
-      o = navigator.userAgent
+      o = navigator.userAgent;
     function r() {
-      clearTimeout(e), (e = setTimeout(i, 99))
+      clearTimeout(e), (e = setTimeout(i, 99));
     }
     function a() {
-      r(), n && n.addListener && n.addListener(r)
+      r(), n && n.addListener && n.addListener(r);
     }
     t.HTMLPictureElement &&
       /ecko/.test(o) &&
@@ -4632,21 +4641,21 @@ var objectFitImages = (function () {
             !(function (t) {
               var e,
                 i,
-                n = t.parentNode
+                n = t.parentNode;
               'PICTURE' === n.nodeName.toUpperCase()
                 ? ((e = s.cloneNode()),
                   n.insertBefore(e, n.firstElementChild),
                   setTimeout(function () {
-                    n.removeChild(e)
+                    n.removeChild(e);
                   }))
                 : (!t._pfLastSize || t.offsetWidth > t._pfLastSize) &&
                   ((t._pfLastSize = t.offsetWidth),
                   (i = t.sizes),
                   (t.sizes += ',100vw'),
                   setTimeout(function () {
-                    t.sizes = i
-                  }))
-            })(t[e])
+                    t.sizes = i;
+                  }));
+            })(t[e]);
         }),
         (n = t.matchMedia && matchMedia('(orientation: landscape)')),
         (s.srcset =
@@ -4655,17 +4664,17 @@ var objectFitImages = (function () {
           ? a()
           : document.addEventListener('DOMContentLoaded', a),
         r)
-      )
+      );
   })(window),
   (function (t, o, c) {
-    'use strict'
-    var s, u, r
-    o.createElement('picture')
+    'use strict';
+    var s, u, r;
+    o.createElement('picture');
     function e() {}
     function i(t, e, i, n) {
       t.addEventListener
         ? t.addEventListener(e, i, n || !1)
-        : t.attachEvent && t.attachEvent('on' + e, i)
+        : t.attachEvent && t.attachEvent('on' + e, i);
     }
     var y = {},
       a = !1,
@@ -4701,13 +4710,13 @@ var objectFitImages = (function () {
       O = /^\d+$/,
       L = /^-?(?:[0-9]+|[0-9]*\.[0-9]+)(?:[eE][+-]?[0-9]+)?$/,
       g = function (e) {
-        var i = {}
+        var i = {};
         return function (t) {
-          return t in i || (i[t] = e(t)), i[t]
-        }
-      }
+          return t in i || (i[t] = e(t)), i[t];
+        };
+      };
     function Z(t) {
-      return ' ' === t || '\t' === t || '\n' === t || '\f' === t || '\r' === t
+      return ' ' === t || '\t' === t || '\n' === t || '\f' === t || '\r' === t;
     }
     function $(t, e) {
       return (
@@ -4716,7 +4725,7 @@ var objectFitImages = (function () {
             (t.res = t.w / t.cWidth))
           : (t.res = t.d),
         t
-      )
+      );
     }
     var W,
       H,
@@ -4740,8 +4749,8 @@ var objectFitImages = (function () {
             'return ' +
             (function () {
               for (var t = arguments, e = 0, i = t[0]; ++e in t; )
-                i = i.replace(t[e], t[++e])
-              return i
+                i = i.replace(t[e], t[++e]);
+              return i;
             })(
               (t || '').toLowerCase(),
               /\band\b/g,
@@ -4760,24 +4769,24 @@ var objectFitImages = (function () {
               ''
             ) +
             ';'
-          )
+          );
         })),
         function (t, e) {
-          var i
+          var i;
           if (!(t in k))
-            if (((k[t] = !1), e && (i = t.match(W)))) k[t] = i[1] * D[i[2]]
+            if (((k[t] = !1), e && (i = t.match(W)))) k[t] = i[1] * D[i[2]];
             else
               try {
-                k[t] = new Function('e', H(t))(D)
+                k[t] = new Function('e', H(t))(D);
               } catch (t) {}
-          return k[t]
+          return k[t];
         }),
       nt = function (t) {
         if (a) {
           var e,
             i,
             n,
-            s = t || {}
+            s = t || {};
           if (
             (s.elements &&
               1 === s.elements.nodeType &&
@@ -4791,28 +4800,28 @@ var objectFitImages = (function () {
                 s.reevaluate || s.reselect ? y.sel : y.selShort
               )).length))
           ) {
-            for (y.setupRun(s), z = !0, i = 0; i < n; i++) y.fillImg(e[i], s)
-            y.teardownRun(s)
+            for (y.setupRun(s), z = !0, i = 0; i < n; i++) y.fillImg(e[i], s);
+            y.teardownRun(s);
           }
         }
-      }
+      };
     function st(t, e) {
-      return t.res - e.res
+      return t.res - e.res;
     }
     function ot(t, e) {
-      var i, n, s
+      var i, n, s;
       if (t && e)
         for (s = y.parseSet(e), t = y.makeUrl(t), i = 0; i < s.length; i++)
           if (t === y.makeUrl(s[i].url)) {
-            n = s[i]
-            break
+            n = s[i];
+            break;
           }
-      return n
+      return n;
     }
     function rt(e, u) {
       function t(t) {
-        var t = t.exec(e.substring(r))
-        if (t) return (t = t[0]), (r += t.length), t
+        var t = t.exec(e.substring(r));
+        if (t) return (t = t[0]), (r += t.length), t;
       }
       var h,
         d,
@@ -4821,7 +4830,7 @@ var objectFitImages = (function () {
         s,
         o = e.length,
         r = 0,
-        p = []
+        p = [];
       function a() {
         for (var t, e, i, n, s, o, r, a = !1, l = {}, c = 0; c < d.length; c++)
           (n = (r = d[c])[r.length - 1]),
@@ -4834,7 +4843,7 @@ var objectFitImages = (function () {
               ? ((t || e || i) && (a = !0), r < 0 ? (a = !0) : (e = r))
               : O.test(s) && 'h' === n
               ? ((i || e) && (a = !0), 0 === o ? (a = !0) : (i = o))
-              : (a = !0)
+              : (a = !0);
         a ||
           ((l.url = h),
           t && (l.w = t),
@@ -4843,11 +4852,11 @@ var objectFitImages = (function () {
           i || e || t || (l.d = 1),
           1 === l.d && (u.has1x = !0),
           (l.set = u),
-          p.push(l))
+          p.push(l));
       }
       for (;;) {
-        if ((t(P), o <= r)) return p
-        ;(h = t(F)),
+        if ((t(P), o <= r)) return p;
+        (h = t(F)),
           (d = []),
           ',' === h.slice(-1)
             ? ((h = h.replace(R, '')), a())
@@ -4855,28 +4864,28 @@ var objectFitImages = (function () {
                 for (t(B), i = '', n = 'in descriptor'; ; ) {
                   if (((s = e.charAt(r)), 'in descriptor' === n))
                     if (Z(s))
-                      i && (d.push(i), (i = ''), (n = 'after descriptor'))
+                      i && (d.push(i), (i = ''), (n = 'after descriptor'));
                     else {
-                      if (',' === s) return (r += 1), i && d.push(i), a()
-                      if ('(' === s) (i += s), (n = 'in parens')
+                      if (',' === s) return (r += 1), i && d.push(i), a();
+                      if ('(' === s) (i += s), (n = 'in parens');
                       else {
-                        if ('' === s) return i && d.push(i), a()
-                        i += s
+                        if ('' === s) return i && d.push(i), a();
+                        i += s;
                       }
                     }
                   else if ('in parens' === n)
-                    if (')' === s) (i += s), (n = 'in descriptor')
+                    if (')' === s) (i += s), (n = 'in descriptor');
                     else {
-                      if ('' === s) return d.push(i), a()
-                      i += s
+                      if ('' === s) return d.push(i), a();
+                      i += s;
                     }
                   else if ('after descriptor' === n && !Z(s)) {
-                    if ('' === s) return a()
-                    ;(n = 'in descriptor'), --r
+                    if ('' === s) return a();
+                    (n = 'in descriptor'), --r;
                   }
-                  r += 1
+                  r += 1;
                 }
-              })()
+              })();
       }
     }
     function at(t) {
@@ -4888,7 +4897,7 @@ var objectFitImages = (function () {
         r,
         a =
           /^(?:[+-]?[0-9]+|[0-9]*\.[0-9]+)(?:[eE][+-]?[0-9]+)?(?:ch|cm|em|ex|in|mm|pc|pt|px|rem|vh|vmin|vmax|vw)$/i,
-        l = /^calc\((?:[0-9a-z \.\+\-\*\/\(\)]+)\)$/i
+        l = /^calc\((?:[0-9a-z \.\+\-\*\/\(\)]+)\)$/i;
       for (
         n = (i = (function (t) {
           var e,
@@ -4897,43 +4906,43 @@ var objectFitImages = (function () {
             s = [],
             o = 0,
             r = 0,
-            a = !1
+            a = !1;
           function l() {
-            i && (n.push(i), (i = ''))
+            i && (n.push(i), (i = ''));
           }
           function c() {
-            n[0] && (s.push(n), (n = []))
+            n[0] && (s.push(n), (n = []));
           }
           for (;;) {
-            if ('' === (e = t.charAt(r))) return l(), c(), s
+            if ('' === (e = t.charAt(r))) return l(), c(), s;
             if (a)
               '*' !== e || '/' !== t[r + 1]
                 ? (r += 1)
-                : ((a = !1), (r += 2), l())
+                : ((a = !1), (r += 2), l());
             else {
               if (Z(e)) {
                 if ((t.charAt(r - 1) && Z(t.charAt(r - 1))) || !i) {
-                  r += 1
-                  continue
+                  r += 1;
+                  continue;
                 }
                 if (0 === o) {
-                  l(), (r += 1)
-                  continue
+                  l(), (r += 1);
+                  continue;
                 }
-                e = ' '
-              } else if ('(' === e) o += 1
-              else if (')' === e) --o
+                e = ' ';
+              } else if ('(' === e) o += 1;
+              else if (')' === e) --o;
               else {
                 if (',' === e) {
-                  l(), c(), (r += 1)
-                  continue
+                  l(), c(), (r += 1);
+                  continue;
                 }
                 if ('/' === e && '*' === t.charAt(r + 1)) {
-                  ;(a = !0), (r += 2)
-                  continue
+                  (a = !0), (r += 2);
+                  continue;
                 }
               }
-              ;(i += e), (r += 1)
+              (i += e), (r += 1);
             }
           }
         })(t)).length,
@@ -4950,25 +4959,25 @@ var objectFitImages = (function () {
             '-0' === r ||
             '+0' === r)
         ) {
-          if (((o = o), s.pop(), 0 === s.length)) return o
-          if (((s = s.join(' ')), y.matchesMedia(s))) return o
+          if (((o = o), s.pop(), 0 === s.length)) return o;
+          if (((s = s.join(' ')), y.matchesMedia(s))) return o;
         }
-      return '100vw'
+      return '100vw';
     }
     function lt() {
       2 === N.width && (y.supSizes = !0),
         (u = y.supSrcset && !y.supSizes),
         (a = !0),
-        setTimeout(nt)
+        setTimeout(nt);
     }
     function ct() {
-      var t = o.readyState || ''
-      ;(q = setTimeout(ct, 'loading' === t ? 200 : 999)),
-        o.body && (y.fillImgs(), (U = U || X.test(t)) && clearTimeout(q))
+      var t = o.readyState || '';
+      (q = setTimeout(ct, 'loading' === t ? 200 : 999)),
+        o.body && (y.fillImgs(), (U = U || X.test(t)) && clearTimeout(q));
     }
     function ut() {
-      var t = new Date() - Y
-      t < G ? (V = setTimeout(ut, G - t)) : ((V = null), Q())
+      var t = new Date() - Y;
+      t < G ? (V = setTimeout(ut, G - t)) : ((V = null), Q());
     }
     t.console && console.warn,
       b in n || (b = 'src'),
@@ -5010,40 +5019,40 @@ var objectFitImages = (function () {
       (y.types = m),
       (y.setSize = e),
       (y.makeUrl = g(function (t) {
-        return (M.href = t), M.href
+        return (M.href = t), M.href;
       })),
       (y.qsa = function (t, e) {
-        return 'querySelector' in t ? t.querySelectorAll(e) : []
+        return 'querySelector' in t ? t.querySelectorAll(e) : [];
       }),
       (y.matchesMedia = function () {
         return (
           t.matchMedia && (matchMedia('(min-width: 0.1em)') || {}).matches
             ? (y.matchesMedia = function (t) {
-                return !t || matchMedia(t).matches
+                return !t || matchMedia(t).matches;
               })
             : (y.matchesMedia = y.mMQ),
           y.matchesMedia.apply(this, arguments)
-        )
+        );
       }),
       (y.mMQ = function (t) {
-        return !t || it(t)
+        return !t || it(t);
       }),
       (y.calcLength = function (t) {
-        t = it(t, !0) || !1
-        return (t = t < 0 ? !1 : t)
+        t = it(t, !0) || !1;
+        return (t = t < 0 ? !1 : t);
       }),
       (y.supportsType = function (t) {
-        return !t || m[t]
+        return !t || m[t];
       }),
       (y.parseSize = g(function (t) {
-        t = (t || '').match(v)
-        return { media: t && t[1], length: t && t[2] }
+        t = (t || '').match(v);
+        return { media: t && t[1], length: t && t[2] };
       })),
       (y.parseSet = function (t) {
-        return t.cands || (t.cands = rt(t.srcset, t)), t.cands
+        return t.cands || (t.cands = rt(t.srcset, t)), t.cands;
       }),
       (y.getEmValue = function () {
-        var t, e, i, n
+        var t, e, i, n;
         return (
           !s &&
             (t = o.body) &&
@@ -5061,21 +5070,21 @@ var objectFitImages = (function () {
             (l.style.cssText = i),
             (t.style.cssText = n)),
           s || 16
-        )
+        );
       }),
       (y.calcListLength = function (t) {
-        var e
+        var e;
         return (
           (t in I && !_.uT) ||
             ((e = y.calcLength(at(t))), (I[t] = e || D.width)),
           I[t]
-        )
+        );
       }),
       (y.setRes = function (t) {
         if (t)
           for (var e, i = 0, n = (e = y.parseSet(t)).length; i < n; i++)
-            $(e[i], t.sizes)
-        return e
+            $(e[i], t.sizes);
+        return e;
       }),
       (y.setRes.res = $),
       (y.applySetCandidate = function (t, e) {
@@ -5109,7 +5118,7 @@ var objectFitImages = (function () {
                 ((c = y.makeUrl(c)),
                 (l[y.ns].curSrc = c),
                 (l[y.ns].curCan = v).res || $(v, v.set.sizes)),
-              v)
+              v);
           if (
             (v &&
               v.set === t[0].set &&
@@ -5139,23 +5148,23 @@ var objectFitImages = (function () {
                       : u),
                   d < u)
                     ? t[s]
-                    : i
-                break
+                    : i;
+                break;
               }
           r &&
             ((v = y.makeUrl(r.url)),
             (f.curSrc = v),
             (f.curCan = r),
             v !== w && y.setSrc(e, r),
-            y.setSize(e))
+            y.setSize(e));
         }
       }),
       (y.setSrc = function (t, e) {
-        ;(t.src = e.url),
+        (t.src = e.url),
           'image/svg+xml' === e.set.type &&
             ((e = t.style.width),
             (t.style.width = t.offsetWidth + 1 + 'px'),
-            t.offsetWidth + 1 && (t.style.width = e))
+            t.offsetWidth + 1 && (t.style.width = e));
       }),
       (y.getSet = function (t) {
         for (var e, i, n = !1, s = t[y.ns].sets, o = 0; o < s.length && !n; o++)
@@ -5164,10 +5173,10 @@ var objectFitImages = (function () {
             y.matchesMedia(e.media) &&
             (i = y.supportsType(e.type))
           ) {
-            n = e = 'pending' === i ? i : e
-            break
+            n = e = 'pending' === i ? i : e;
+            break;
           }
-        return n
+        return n;
       }),
       (y.parseSets = function (t, e, i) {
         var n,
@@ -5175,8 +5184,8 @@ var objectFitImages = (function () {
           o,
           r,
           a = e && 'PICTURE' === e.nodeName.toUpperCase(),
-          l = t[y.ns]
-        ;(l.src !== c && !i.src) ||
+          l = t[y.ns];
+        (l.src !== c && !i.src) ||
           ((l.src = h.call(t, 'src')),
           l.src ? d.call(t, A, l.src) : p.call(t, A)),
           (l.srcset !== c && !i.srcset && y.supSrcset && !t.srcset) ||
@@ -5201,7 +5210,7 @@ var objectFitImages = (function () {
                       media: i.getAttribute('media'),
                       type: i.getAttribute('type'),
                       sizes: i.getAttribute('sizes'),
-                    })
+                    });
             })(e, l.sets)),
           l.srcset
             ? ((s = { srcset: l.srcset, sizes: h.call(t, 'sizes') }),
@@ -5224,11 +5233,11 @@ var objectFitImages = (function () {
             !l.srcset &&
             ((!l.src && t.src) || t.src !== y.makeUrl(l.src)) &&
             (null === l.src ? t.removeAttribute('src') : (t.src = l.src)),
-          (l.parsed = !0)
+          (l.parsed = !0);
       }),
       (y.fillImg = function (t, e) {
         var i,
-          n = e.reselect || e.reevaluate
+          n = e.reselect || e.reevaluate;
         t[y.ns] || (t[y.ns] = {}),
           (i = t[y.ns]),
           (!n && i.evaled === r) ||
@@ -5241,10 +5250,10 @@ var objectFitImages = (function () {
                 'pending' !== i &&
                   ((t = r),
                   i && ((i = y.setRes(i)), y.applySetCandidate(i, e))),
-                (e[y.ns].evaled = t)))
+                (e[y.ns].evaled = t)));
       }),
       (y.setupRun = function () {
-        ;(z && !E && S === t.devicePixelRatio) ||
+        (z && !E && S === t.devicePixelRatio) ||
           ((E = !1),
           (S = t.devicePixelRatio),
           (k = {}),
@@ -5256,7 +5265,7 @@ var objectFitImages = (function () {
           (D.vh = D.height / 100),
           (r = [D.height, D.width, S].join('-')),
           (D.em = y.getEmValue()),
-          (D.rem = D.em))
+          (D.rem = D.em));
       }),
       y.supPicture
         ? ((nt = e), (y.fillImg = e))
@@ -5267,15 +5276,15 @@ var objectFitImages = (function () {
             t,
             'resize',
             ((Q = function () {
-              ;(E =
+              (E =
                 Math.max(t.innerWidth || 0, l.clientWidth) !== D.width ||
                 l.clientHeight !== K),
                 (K = l.clientHeight),
-                E && y.fillImgs()
+                E && y.fillImgs();
             }),
             (G = 99),
             function () {
-              ;(Y = new Date()), (V = V || setTimeout(ut, G))
+              (Y = new Date()), (V = V || setTimeout(ut, G));
             })
           ),
           i(o, 'readystatechange', ct)),
@@ -5286,20 +5295,20 @@ var objectFitImages = (function () {
       (t.picturefillCFG = {
         pf: y,
         push: function (t) {
-          var e = t.shift()
+          var e = t.shift();
           'function' == typeof y[e]
             ? y[e].apply(y, t)
-            : ((_[e] = t[0]), z && y.fillImgs({ reselect: !0 }))
+            : ((_[e] = t[0]), z && y.fillImgs({ reselect: !0 }));
         },
-      })
-    for (; C && C.length; ) t.picturefillCFG.push(C.shift())
-    ;(t.picturefill = nt),
+      });
+    for (; C && C.length; ) t.picturefillCFG.push(C.shift());
+    (t.picturefill = nt),
       'object' == typeof module && 'object' == typeof module.exports
         ? (module.exports = nt)
         : 'function' == typeof define &&
           define.amd &&
           define('picturefill', function () {
-            return nt
+            return nt;
           }),
       y.supPicture ||
         (m['image/webp'] =
@@ -5307,17 +5316,17 @@ var objectFitImages = (function () {
           (tt =
             'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA=='),
           ((et = new t.Image()).onerror = function () {
-            ;(m[J] = !1), nt()
+            (m[J] = !1), nt();
           }),
           (et.onload = function () {
-            ;(m[J] = 1 === et.width), nt()
+            (m[J] = 1 === et.width), nt();
           }),
           (et.src = tt),
-          'pending'))
+          'pending'));
   })(window, document),
   function () {
     var D = this.jQuery || window.jQuery,
-      M = D(window)
+      M = D(window);
     D.fn.stick_in_parent = function (t) {
       var x,
         e,
@@ -5331,7 +5340,7 @@ var objectFitImages = (function () {
         E = t.parent,
         k = t.offset_top,
         I = t.spacer,
-        S = t.bottoming
+        S = t.bottoming;
       for (
         null == k && (k = 0),
           null == E && (E = void 0),
@@ -5340,7 +5349,7 @@ var objectFitImages = (function () {
           x = D(document),
           null == S && (S = !0),
           s = function (t) {
-            var e, i
+            var e, i;
             return window.getComputedStyle
               ? (t[0],
                 (e = window.getComputedStyle(t[0])),
@@ -5355,10 +5364,10 @@ var objectFitImages = (function () {
                     parseFloat(e.getPropertyValue('padding-left')) +
                     parseFloat(e.getPropertyValue('padding-right'))),
                 i)
-              : t.outerWidth(!0)
+              : t.outerWidth(!0);
           },
           i = function (o, r, a, l, c, u, h, d) {
-            var p, t, m, A, f, g, w, v, e, y, _, n
+            var p, t, m, A, f, g, w, v, e, y, _, n;
             if (!o.data('sticky_kit')) {
               if (
                 (o.data('sticky_kit', !0),
@@ -5366,13 +5375,13 @@ var objectFitImages = (function () {
                 (w = o.parent()),
                 !(w = null != E ? w.closest(E) : w).length)
               )
-                throw 'failed to find stick parent'
+                throw 'failed to find stick parent';
               if (
                 ((p = m = !1),
                 (_ = null != I ? I && o.closest(I) : D('<div />')) &&
                   _.css('position', o.css('position')),
                 (v = function () {
-                  var t, e, i
+                  var t, e, i;
                   if (!d)
                     return (
                       (f = x.height()),
@@ -5403,7 +5412,7 @@ var objectFitImages = (function () {
                           float: h,
                         }),
                       i ? n() : void 0
-                    )
+                    );
                 })(),
                 u !== l)
               )
@@ -5412,7 +5421,7 @@ var objectFitImages = (function () {
                   (g = k),
                   (y = T),
                   (n = function () {
-                    var t, e, i, n, s
+                    var t, e, i, n, s;
                     if (!d)
                       return (
                         (i = !1),
@@ -5477,7 +5486,7 @@ var objectFitImages = (function () {
                               })
                               .trigger('sticky_kit:bottom'))
                           : void 0
-                      )
+                      );
                   }),
                   (e = function () {
                     if (
@@ -5488,7 +5497,7 @@ var objectFitImages = (function () {
                         document.msFullscreenElement
                       )
                     )
-                      return v(), n()
+                      return v(), n();
                   }),
                   (t = function () {
                     if (
@@ -5508,7 +5517,7 @@ var objectFitImages = (function () {
                           (('left' !== h && 'right' !== h) || o.insertAfter(_),
                           _.remove()),
                         o.removeClass(b)
-                      )
+                      );
                   }),
                   M.on('touchmove', n),
                   M.on('scroll', n),
@@ -5516,7 +5525,7 @@ var objectFitImages = (function () {
                   D(document.body).on('sticky_kit:recalc', e),
                   o.on('sticky_kit:detach', t),
                   setTimeout(n, 0)
-                )
+                );
             }
           },
           n = 0,
@@ -5524,12 +5533,12 @@ var objectFitImages = (function () {
         n < o;
         n++
       )
-        (e = this[n]), i(D(e))
-      return this
-    }
+        (e = this[n]), i(D(e));
+      return this;
+    };
   }.call(this),
   (function (a) {
-    'use strict'
+    'use strict';
     var r = {
       settings: { admin_bar: { height: 0, position: '' } },
       init: function () {
@@ -5555,26 +5564,27 @@ var objectFitImages = (function () {
           this.animate_counters(),
           this.cover_image_parallax(),
           this.align_full_fix(),
-          this.switcher()
+          this.switcher();
       },
       resize: function () {
-        this.admin_bar_check(), this.sticky_sidebar(), this.align_full_fix()
+        this.admin_bar_check(), this.sticky_sidebar(), this.align_full_fix();
       },
       scroll: function () {},
       admin_bar_check: function () {
         a('#wpadminbar').length &&
           a('#wpadminbar').is(':visible') &&
           ((this.settings.admin_bar.height = a('#wpadminbar').height()),
-          (this.settings.admin_bar.position = a('#wpadminbar').css('position')))
+          (this.settings.admin_bar.position =
+            a('#wpadminbar').css('position')));
       },
       switcher: function () {
         a('#switcher_link, .switcher_close').click(function (t) {
-          t.preventDefault(), a('#switcher_wrap').toggleClass('switcher_moved')
+          t.preventDefault(), a('#switcher_wrap').toggleClass('switcher_moved');
         }),
           a('#switcher_wrap').hasClass('lazy_open') &&
             setTimeout(function () {
               a('#switcher_wrap').hasClass('switcher_moved') &&
-                a('#switcher_link').click()
+                a('#switcher_link').click();
             }, 7e3),
           a('#show-rtl').change(function () {
             a(this).is(':checked')
@@ -5583,14 +5593,14 @@ var objectFitImages = (function () {
                     a(this).attr('data-url') +
                     '" id="travell-rtl-css-custom" rel="stylesheet">'
                 )
-              : a('#travell-rtl-css-custom').remove()
-          })
+              : a('#travell-rtl-css-custom').remove();
+          });
       },
       sticky_sidebar: function () {
         a('.travell-sidebar-sticky').length &&
           a('body').imagesLoaded(function () {
             var t = a('.travell-sidebar-sticky'),
-              i = window.matchMedia('(min-width: 1260px)').matches ? 50 : 30
+              i = window.matchMedia('(min-width: 1260px)').matches ? 50 : 30;
             t.each(function () {
               var t = a(this).parent().hasClass('travell-sidebar-mini')
                   ? 730
@@ -5603,7 +5613,7 @@ var objectFitImages = (function () {
                   ('fixed' == r.settings.admin_bar.position
                     ? r.settings.admin_bar.height
                     : 0) +
-                  i
+                  i;
               window.matchMedia('(min-width: ' + t + 'px)').matches
                 ? a(this).stick_in_parent({
                     inner_scrolling: !0,
@@ -5611,9 +5621,9 @@ var objectFitImages = (function () {
                   })
                 : (a(this).css('height', 'auto'),
                   a(this).css('min-height', '1px'),
-                  a(this).trigger('sticky_kit:detach'))
-            })
-          })
+                  a(this).trigger('sticky_kit:detach'));
+            });
+          });
       },
       accordion_widget: function () {
         a('.widget').each(function () {
@@ -5623,53 +5633,53 @@ var objectFitImages = (function () {
             )
             .after(
               '<span class="travell-accordion-nav"><i class="o-angle-down-1"></i></span>'
-            )
+            );
         }),
           a('.widget').on('click', '.travell-accordion-nav', function () {
             a(this)
               .next('ul.sub-menu:first, ul.children:first')
               .slideToggle('fast')
               .parent()
-              .toggleClass('active')
-          })
+              .toggleClass('active');
+          });
       },
       responsive_sidebar: function () {
         a('body').on('click', '.travell-hamburger', function () {
-          a('body').addClass('travell-sidebar-action-open travell-lock')
+          a('body').addClass('travell-sidebar-action-open travell-lock');
           var t =
             'fixed' == r.settings.admin_bar.position ||
             0 == a(window).scrollTop()
               ? r.settings.admin_bar.height
-              : 0
-          a('.travell-sidebar').css('top', t)
+              : 0;
+          a('.travell-sidebar').css('top', t);
         }),
           a('body').on(
             'click',
             '.travell-action-close, .travell-body-overlay',
             function () {
-              a('body').removeClass('travell-sidebar-action-open travell-lock')
+              a('body').removeClass('travell-sidebar-action-open travell-lock');
             }
           ),
           a(document).keyup(function (t) {
             27 == t.keyCode &&
               a('body').hasClass('travell-sidebar-action-open') &&
-              a('body').removeClass('travell-sidebar-action-open travell-lock')
-          })
+              a('body').removeClass('travell-sidebar-action-open travell-lock');
+          });
         var t = a('.travell-sidebar .widget:not(.travell-responsive-nav)'),
           e = a(
             '.travell-sidebar .widget.widget-no-padding:not(.travell-responsive-nav)'
-          )
+          );
         t.length == e.length &&
           0 != t.length &&
-          a('.travell-responsive-nav').addClass('widget-no-padding')
+          a('.travell-responsive-nav').addClass('widget-no-padding');
       },
       header_action_search: function () {
         a('body').on('click', '.travell-action-search span', function () {
           a(this).find('i').toggleClass('o-exit-1', 'o-search-1'),
             a(this).closest('.travell-action-search').toggleClass('active'),
             setTimeout(function () {
-              a('.active input[type="text"]').focus()
-            }, 150)
+              a('.active input[type="text"]').focus();
+            }, 150);
         }),
           a(document).on('click', function (t) {
             !a(t.target).is('.travell-action-search span') &&
@@ -5677,19 +5687,19 @@ var objectFitImages = (function () {
               a('.travell-action-search.active .sub-menu').css(
                 'width',
                 a(window).width()
-              )
-          })
+              );
+          });
       },
       sticky_header: function () {
-        var i = a('.travell-header-sticky')
-        if (l(i)) return !1
-        var n = 0
+        var i = a('.travell-header-sticky');
+        if (l(i)) return !1;
+        var n = 0;
         a(window).scroll(function () {
           var t = a(window).scrollTop(),
             e =
               'fixed' == r.settings.admin_bar.position
                 ? r.settings.admin_bar.height
-                : 0
+                : 0;
           travell_js_settings.header_sticky_up
             ? t < n && t >= travell_js_settings.header_sticky_offset
               ? r.show_sticky_header(i, e)
@@ -5697,8 +5707,8 @@ var objectFitImages = (function () {
             : t >= travell_js_settings.header_sticky_offset
             ? r.show_sticky_header(i, e)
             : r.hide_sticky_header(i),
-            (n = t)
-        })
+            (n = t);
+        });
       },
       fit_vids: function () {
         a(
@@ -5733,14 +5743,14 @@ var objectFitImages = (function () {
             "iframe[src*='videos.sproutvideo.com']",
           ].join(','),
           ignore: '[class^="wp-block"]',
-        })
+        });
       },
       show_sticky_header: function (t, e) {
-        ;(t = l(e) ? 0 : t).hasClass('active') ||
-          (t.css('top', e), t.addClass('active'))
+        (t = l(e) ? 0 : t).hasClass('active') ||
+          (t.css('top', e), t.addClass('active'));
       },
       hide_sticky_header: function (t) {
-        t.hasClass('active') && t.removeClass('active')
+        t.hasClass('active') && t.removeClass('active');
       },
       sliders: function () {
         a('body').imagesLoaded(function () {
@@ -5749,8 +5759,8 @@ var objectFitImages = (function () {
           ).each(function () {
             var t,
               e,
-              i = a(this)
-            ;(!i.hasClass('travell-cover-slider') &&
+              i = a(this);
+            (!i.hasClass('travell-cover-slider') &&
               l(travell_js_settings.use_gallery)) ||
               (i.hasClass('owl-carousel') || i.addClass('owl-carousel'),
               (t = l(
@@ -5787,12 +5797,12 @@ var objectFitImages = (function () {
                   1024: { items: 1 == t ? 1 : 4 },
                   1200: { items: t },
                 },
-              }))
-          })
-        })
+              }));
+          });
+        });
       },
       instagram_slider: function () {
-        var t = a('.travell-pre-footer .meks-instagram-widget')
+        var t = a('.travell-pre-footer .meks-instagram-widget');
         t.length &&
           (t.hasClass('owl-carousel') || t.addClass('owl-carousel'),
           t.owlCarousel({
@@ -5815,20 +5825,20 @@ var objectFitImages = (function () {
               1024: { items: 4 },
               1200: { items: 5 },
             },
-          }))
+          }));
       },
       gutenberg_gallery: function () {
-        var t
+        var t;
         l(travell_js_settings.use_gallery) ||
           ((t = a('.wp-block-gallery')).length &&
             a('body').imagesLoaded(function () {
-              var i = document.querySelectorAll('.wp-block-gallery img')
+              var i = document.querySelectorAll('.wp-block-gallery img');
               t.find('a').each(function (t) {
                 var e = i[t].naturalWidth,
-                  t = i[t].naturalHeight
-                a(this).attr('data-size', JSON.stringify({ w: e, h: t }))
-              })
-            }))
+                  t = i[t].naturalHeight;
+                a(this).attr('data-size', JSON.stringify({ w: e, h: t }));
+              });
+            }));
       },
       popup: function () {
         a('body').on(
@@ -5839,7 +5849,7 @@ var objectFitImages = (function () {
               a(this).hasClass('travell-popup-img') ||
               !l(travell_js_settings.use_gallery)
             ) {
-              t.preventDefault()
+              t.preventDefault();
               var e = document.querySelectorAll('.pswp')[0],
                 i = [],
                 n = 0,
@@ -5848,7 +5858,7 @@ var objectFitImages = (function () {
                   .closest('.gallery, .wp-block-gallery')
                   .hasClass('owl-carousel'),
                 t = [],
-                r = !s.hasClass('travell-popup-img')
+                r = !s.hasClass('travell-popup-img');
               if (
                 l(
                   (t = r
@@ -5864,10 +5874,10 @@ var objectFitImages = (function () {
                     : a('a.travell-popup-img'))
                 )
               )
-                return !0
+                return !0;
               a.each(t, function (t) {
-                s.attr('href') == a(this).attr('href') && (n = t)
-                ;(t = JSON.parse(a(this).attr('data-size'))),
+                s.attr('href') == a(this).attr('href') && (n = t);
+                (t = JSON.parse(a(this).attr('data-size'))),
                   (t = {
                     src: a(this).attr('href'),
                     w: t.w,
@@ -5878,8 +5888,8 @@ var objectFitImages = (function () {
                     )
                       .find('figcaption')
                       .html(),
-                  })
-                i.push(t)
+                  });
+                i.push(t);
               }),
                 new PhotoSwipe(e, PhotoSwipeUI_Default, i, {
                   history: !1,
@@ -5890,10 +5900,10 @@ var objectFitImages = (function () {
                   zoomEl: !1,
                   shareEl: !1,
                   preloaderEl: !0,
-                }).init()
+                }).init();
             }
           }
-        )
+        );
       },
       reverse_menu: function () {
         a('.travell-header').on('mouseenter', 'ul li', function (t) {
@@ -5902,26 +5912,26 @@ var objectFitImages = (function () {
               (a(this).find('ul').offset().left +
                 a(this).find('ul').outerWidth()) <
               0 &&
-            a(this).find('ul').addClass('travell-rev')
-        })
+            a(this).find('ul').addClass('travell-rev');
+        });
       },
       init_load_more_click: function () {
         a('body').on('click', '.load-more > a', function (t) {
-          t.preventDefault()
-          t = a(this).attr('href')
+          t.preventDefault();
+          t = a(this).attr('href');
           l(t) ||
             r.load_more(
               { url: t, elem_with_new_url: '.load-more > a' },
               function () {}
-            )
-        })
+            );
+        });
       },
       init_infinite_scroll: function () {
-        var e
+        var e;
         l(a('.travell-pagination .travell-infinite-scroll')) ||
           ((e = !0),
           a(window).scroll(function () {
-            var t = a('.travell-pagination')
+            var t = a('.travell-pagination');
             l(t) ||
               (e &&
                 a(this).scrollTop() > t.offset().top - a(this).height() - 200 &&
@@ -5932,13 +5942,13 @@ var objectFitImages = (function () {
                 r.load_more(
                   { url: t, elem_with_new_url: '.travell-infinite-scroll a' },
                   function () {
-                    e = !0
+                    e = !0;
                   }
-                )))
-          }))
+                )));
+          }));
       },
       load_more: function (t, s) {
-        var e, o
+        var e, o;
         l(t)
           ? console.error("Args can't be empty")
           : (r.toggle_pagination_loader(),
@@ -5954,9 +5964,9 @@ var objectFitImages = (function () {
               var t = a(this),
                 e = t.find(o.elem_with_new_url).attr(o.attr_with_new_url),
                 i = t.find('title').text(),
-                n = t.find(o.container).children()
+                n = t.find(o.container).children();
               n.imagesLoaded(function () {
-                var t
+                var t;
                 n.hide().appendTo('.travell-posts:last').fadeIn(),
                   window.location.href !== e
                     ? (l(e)
@@ -5980,12 +5990,12 @@ var objectFitImages = (function () {
                         .remove(),
                       'function' == typeof s && s(!1)),
                   r.toggle_pagination_loader(),
-                  r.sticky_sidebar()
-              })
-            }))
+                  r.sticky_sidebar();
+              });
+            }));
       },
       toggle_pagination_loader: function () {
-        a('.travell-pagination').toggleClass('travell-loader-active')
+        a('.travell-pagination').toggleClass('travell-loader-active');
       },
       push_state: function (t) {
         var e = {
@@ -5996,17 +6006,17 @@ var objectFitImages = (function () {
             next_title: window.document.title,
             increase_counter: !0,
           },
-          t = a.extend({}, e, t)
+          t = a.extend({}, e, t);
         t.increase_counter && (r.pushes.up++, r.pushes.down++),
           delete t.increase_counter,
           r.pushes.url.push(t),
           (window.document.title = t.next_title),
-          window.history.pushState(t, '', t.next)
+          window.history.pushState(t, '', t.next);
       },
       pushes: { url: [], up: 0, down: 0 },
       scroll_push_state: function () {
-        var t, e
-        ;(l(a('.travell-pagination .load-more a')) &&
+        var t, e;
+        (l(a('.travell-pagination .load-more a')) &&
           l(a('.travell-pagination .travell-infinite-scroll'))) ||
           (r.push_state({ increase_counter: !1 }),
           (e = 0),
@@ -6035,17 +6045,17 @@ var objectFitImages = (function () {
                   r.pushes.url[r.pushes.down].next
                 ),
                 (r.pushes.up = r.pushes.down),
-                r.pushes.down < r.pushes.url.length - 1 && r.pushes.down++)
-          }))
+                r.pushes.down < r.pushes.url.length - 1 && r.pushes.down++);
+          }));
       },
       scroll_animate: function () {
         a('body').on('click', '.travell-scroll-animate', function (t) {
-          t.preventDefault()
+          t.preventDefault();
           var e = this.hash,
             i = a(e),
             t = travell_js_settings.header_sticky
               ? a('.travell-header-sticky').height()
-              : 0
+              : 0;
           a('html, body')
             .stop()
             .animate(
@@ -6053,23 +6063,23 @@ var objectFitImages = (function () {
               900,
               'swing',
               function () {
-                window.location.hash = e
+                window.location.hash = e;
               }
-            )
-        })
+            );
+        });
       },
       start_kenburns: function () {
-        if (window.matchMedia('(max-width: 439px)').matches) return !1
+        if (window.matchMedia('(max-width: 439px)').matches) return !1;
         a('body').imagesLoaded(function () {
           a('body.travell-animation-kenburns').addClass(
             'travell-animation-kenburns-start'
-          )
-        })
+          );
+        });
       },
       object_fit_fix: function () {
         a('body').imagesLoaded(function () {
-          objectFitImages('.travell-item a.entry-image img,.travell-cover img')
-        })
+          objectFitImages('.travell-item a.entry-image img,.travell-cover img');
+        });
       },
       video_fallback_image: function () {
         travell_js_settings.home_cover_video_image_fallback &&
@@ -6082,16 +6092,16 @@ var objectFitImages = (function () {
               a('.travell-cover-video-item .travell-fallback-video-image').css(
                 'display',
                 'block'
-              ))
-          })
+              ));
+          });
       },
       is_autoplay_supported: function (t) {
         if ('function' != typeof t)
           return (
             console.log('is_autoplay_supported: Callback must be a function!'),
             !1
-          )
-        var e
+          );
+        var e;
         sessionStorage.autoplay_supported
           ? 'true' === sessionStorage.autoplay_supported
             ? t(!0)
@@ -6104,42 +6114,42 @@ var objectFitImages = (function () {
             (e.playing = !1),
             e.play(),
             (e.onplay = function () {
-              this.playing = !0
+              this.playing = !0;
             }),
             (e.oncanplay = function () {
               e.playing
                 ? ((sessionStorage.autoplay_supported = 'true'), t(!0))
-                : ((sessionStorage.autoplay_supported = 'false'), t(!1))
-            }))
+                : ((sessionStorage.autoplay_supported = 'false'), t(!1));
+            }));
       },
       animate_counters: function () {
-        var e, i
+        var e, i;
         !travell_js_settings.home_counter_animate ||
           (0 != (e = a('.travell-numbers')).length &&
             ((i = !0),
             a(window).scroll(function () {
-              var t = e.offset().top - window.innerHeight
+              var t = e.offset().top - window.innerHeight;
               i &&
                 a(window).scrollTop() > t &&
                 (a('.display-2').each(function () {
                   var t = a(this),
-                    e = t.attr('data-count')
+                    e = t.attr('data-count');
                   a({ count_start: 0 }).animate(
                     { count_start: e },
                     {
                       duration: 2e3,
                       easing: 'swing',
                       step: function () {
-                        t.text(Math.floor(this.count_start))
+                        t.text(Math.floor(this.count_start));
                       },
                       complete: function () {
-                        t.text(this.count_start)
+                        t.text(this.count_start);
                       },
                     }
-                  )
+                  );
                 }),
-                (i = !1))
-            })))
+                (i = !1));
+            })));
       },
       cover_image_parallax: function () {
         travell_js_settings.cover_parallax &&
@@ -6150,10 +6160,10 @@ var objectFitImages = (function () {
                 'src'
               ) +
               ')'
-          )
+          );
       },
       align_full_fix: function () {
-        var t
+        var t;
         a('body').hasClass('travell-sidebar-none') &&
           ((t =
             '.alignfull { width: ' +
@@ -6169,9 +6179,9 @@ var objectFitImages = (function () {
                 '<style id="travell-align-fix" type="text/css">' +
                   t +
                   '</style>'
-              ))
+              ));
       },
-    }
+    };
     function l(t) {
       return (
         void 0 === t ||
@@ -6179,15 +6189,15 @@ var objectFitImages = (function () {
         0 === t.length ||
         '' === t ||
         !('object' != typeof t || !a.isEmptyObject(t))
-      )
+      );
     }
     a(document).ready(function () {
-      r.init()
+      r.init();
     }),
       a(window).resize(function () {
-        r.resize()
+        r.resize();
       }),
       a(window).scroll(function () {
-        r.scroll()
-      })
-  })(jQuery)
+        r.scroll();
+      });
+  })(jQuery);
